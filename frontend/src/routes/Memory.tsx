@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/Memory.css';
 
 // interface for the tile object in the game
 interface tileData {
@@ -35,7 +36,7 @@ interface tileProps {
 // accepts props for value and an onClick handler
 function Tile({ value, onClick, isFlipped }: tileProps) {
     return (
-        <div className={`tile ${isFlipped ? 'flipped' : ''}`} onClick={onClick}>
+        <div className={`tile_component ${isFlipped ? 'isFlipped' : ''}`} onClick={onClick}>
             {isFlipped ? value : ''}
         </div>
     );
@@ -74,7 +75,7 @@ function Memory() {
 
     // renders tile component for each tile in the game
     return (
-        <div className="memory-game">
+        <div className="memory_game_board">
             {tiles.map(tile => (
                 <Tile
                     key={tile.tileID}

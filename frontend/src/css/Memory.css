@@ -1,0 +1,25 @@
+.memory_game_board {
+    padding-top: 100px;
+    gap: 15px;
+    max-width: 650px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tile_component {
+    width: 150px;
+    height: 150px;
+    background-color: forestgreen;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-family: "Times New Roman", serif;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+}
+
+.tile_component.isFlipped {
+    background-color: darkseagreen;
+}
