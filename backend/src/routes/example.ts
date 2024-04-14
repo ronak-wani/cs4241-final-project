@@ -16,4 +16,8 @@ router.get("/", async function (req: Request, res: Response) {
     res.status(200).json(database);
 });
 
+router.get("/login-info", async function (req: Request, res: Response) {
+    res.status(200).json("login-info");
+})
+
 export default router;
