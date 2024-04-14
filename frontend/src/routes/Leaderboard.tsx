@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {score} from "common/src/types";
+import sort from "../sort";
 
 function LeaderBoard() {
     const [scores, setScores] = useState<score[]>([]);
+
+
     useEffect(() => {
         const temp: score[] = [
             {username: 'Mike', score: 123, date: new Date()},
@@ -12,8 +15,15 @@ function LeaderBoard() {
             {username: 'Sai', score: 78, date: new Date()},
             {username: 'Klaudio', score: 54, date: new Date()},
         ];
-        setScores(temp);
+
+        const newScores = sort((a:score, b:score): boolean => {
+            return a.score < b.score;
+        }, temp);
+        setScores(newScores);
     }, []);
+
+
+
 
 
     return (
