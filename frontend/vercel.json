@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://hw3-starter-code-backend.vercel.app/api/:path*"
+    }
+  ]
+}
