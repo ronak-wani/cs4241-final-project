@@ -5,30 +5,29 @@ import '../css/Memory.css';
 interface tileData {
     tileID: number;
     tileValue: string;
-    isFlipped: boolean;
 }
 
 // added 12 data values since we're dealing with a 4 x 3 grid, so 6 pairs total
 const tileDataValues: tileData[] = [
-    { tileID: 1, tileValue: 'Blue', isFlipped: false },
-    { tileID: 2, tileValue: 'Green', isFlipped: false },
-    { tileID: 3, tileValue: 'Red', isFlipped: false },
-    { tileID: 4, tileValue: 'Blue', isFlipped: false },
-    { tileID: 5, tileValue: 'Green', isFlipped: false },
-    { tileID: 6, tileValue: 'Red', isFlipped: false },
-    { tileID: 7, tileValue: 'Yellow', isFlipped: false },
-    { tileID: 8, tileValue: 'Yellow', isFlipped: false },
-    { tileID: 9, tileValue: 'Purple', isFlipped: false },
-    { tileID: 10, tileValue: 'Purple', isFlipped: false },
-    { tileID: 11, tileValue: 'Orange', isFlipped: false },
-    { tileID: 12, tileValue: 'Orange', isFlipped: false },
+    { tileID: 1, tileValue: 'Blue' },
+    { tileID: 2, tileValue: 'Green' },
+    { tileID: 3, tileValue: 'Red' },
+    { tileID: 4, tileValue: 'Blue' },
+    { tileID: 5, tileValue: 'Green' },
+    { tileID: 6, tileValue: 'Red' },
+    { tileID: 7, tileValue: 'Yellow' },
+    { tileID: 8, tileValue: 'Yellow' },
+    { tileID: 9, tileValue: 'Purple' },
+    { tileID: 10, tileValue: 'Purple' },
+    { tileID: 11, tileValue: 'Orange' },
+    { tileID: 12, tileValue: 'Orange' },
 ];
 
 // when interacting with the tile object, these are the props that it accepts
 interface tileProps {
     value: string;
-    isFlipped: boolean;
     onClick: () => void;
+    isFlipped: boolean;
 }
 
 // represents an individual tile component
@@ -46,31 +45,25 @@ function Tile({ value, onClick, isFlipped }: tileProps) {
 function Memory() {
 
     // useState hooks to manage state of tiles and IDs of flipped ones
-    const [tiles, setTiles] = useState<tileData[]>(tileDataValues);
+    const [tiles] = useState<tileData[]>(tileDataValues);
     const [flippedTiles, setFlippedTiles] = useState<number[]>([]);
 
     // function that handles the tile flipping and matching logic
     const handleTileClick = (tileID: number) => {
-        // checks to see if two tiles have already been flipped
-        // if so, waits for 1000 ms and then flips tiles back over to not show values
-        if (flippedTiles.length === 2) {
+        // if two tiles are already flipped or the clicked tile is already flipped, don't flip
+        if (flippedTiles.length >= 2 || flippedTiles.includes(tileID)) {
+            return;
+        }
+
+        if (flippedTiles.length === 1) {
+            // if two tiles have just been flipped, set a timer to hide them
             setTimeout(() => {
-                setTiles(prevTiles =>
-                    prevTiles.map(tile =>
-                        flippedTiles.includes(tile.tileID) ? { ...tile, isFlipped: false } : tile
-                    )
-                );
                 setFlippedTiles([]);
             }, 1000);
-
-        // otherwise, clicked tile is flipped by setting boolean to true
-        } else {
-            const newTiles = tiles.map(tile =>
-                tile.tileID === tileID ? { ...tile, isFlipped: true } : tile
-            );
-            setTiles(newTiles);
-            setFlippedTiles([...flippedTiles, tileID]);
         }
+
+        // flip the tile that was clicked
+        setFlippedTiles([...flippedTiles, tileID]);
     };
 
     // renders tile component for each tile in the game
@@ -80,7 +73,7 @@ function Memory() {
                 <Tile
                     key={tile.tileID}
                     value={tile.tileValue}
-                    isFlipped={tile.isFlipped}
+                    isFlipped={flippedTiles.includes(tile.tileID)}
                     onClick={() => handleTileClick(tile.tileID)}
                 />
             ))}
