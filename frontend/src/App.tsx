@@ -2,33 +2,59 @@ import React from 'react';
 import './App.css';
 import {employeeFeedback} from "common/src/types";
 import axios from "axios";
+import {Outlet, RouterProvider} from "react-router";
+import NavBar from "./components/NavBar";
+import {createBrowserRouter} from "react-router-dom";
+import Homepage from "./routes/Homepage";
+import Example from "./routes/Example";
+import LeaderBoard from "./routes/Leaderboard";
+import Memory from "./routes/Memory";
+import Login from "./routes/Login";
 
 function App() {
+  const router = createBrowserRouter([
 
-  async function postData() {
+    {
+      path: "login",
+      errorElement: <h2>Something went wrong!</h2>,
+      element: <Login />,
+    },
+    {
+      path: "/",
+      errorElement: <h2>Something went wrong!</h2>,
+      element: <Root />,
+      children: [
+        {
+          path: "",
+          element: <Homepage />,
+        },
+        {
+          path: "example",
+          element: <Example />,
+        },
+        {
+          path: "leaderboard",
+          element: <LeaderBoard />,
+        },
+        {
+          path: "memory",
+          element: <Memory />,
+        },
+      ],
+    },
+  ]);
 
-    const data: employeeFeedback = {
-      name: 'Mike',
-      feedback: 'is an SA'
-    }
-    //sends a post request the /api/high-score
-    const res = await axios.post("/api/example", data);
-    if(res.status === 200) {
-      console.log("added feedback");
-    }
-  }
+  return <RouterProvider router={router} />;
 
-  async function getData() {
-    const res = await axios.get("api/example");
-    console.log(res.data);
-  }
+  function Root() {
+    return (
 
-  return (
-      <div className="App">
-        <button onClick={postData}>post feedback</button>
-        <button onClick={getData}>get feedback</button>
+      <div className="w-full h-screen flex flex-col">
+        <NavBar />
+        <Outlet />
       </div>
-  );
+    );
+  }
 }
 
 export default App;
