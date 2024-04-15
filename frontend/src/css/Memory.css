@@ -23,3 +23,7 @@
 .tile_component.isFlipped {
     background-color: darkseagreen;
 }
+
+.tile_component.isDone {
+    background-color: cadetblue;
+}
