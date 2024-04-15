@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532714bb-dc25-4bf9-956b-0d62cea1499d" name="Changes" comment="feat: game states and play button">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +76,7 @@
       <workItem from="1713118011596" duration="326000" />
       <workItem from="1713118375970" duration="4622000" />
       <workItem from="1713123792674" duration="474000" />
-      <workItem from="1713207089444" duration="5584000" />
+      <workItem from="1713207089444" duration="5778000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: tile flipped state is solely managed in flippedTiles">
       <option name="closed" value="true" />
@@ -143,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713211447934</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: game states and play button">
+      <option name="closed" value="true" />
+      <created>1713212968097</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713212968097</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

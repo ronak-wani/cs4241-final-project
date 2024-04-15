@@ -53,6 +53,10 @@ function Memory() {
     // states: idle, play, won
     const [state, setState] = useState<string>('idle');
 
+    const handleWon = () => {
+        console.log(time, (new Date()).getTime());
+    }
+
     useEffect(() => {
         if (state !== 'play') return;
 
@@ -76,6 +80,8 @@ function Memory() {
             clearInterval(intervalID);
             alert("You won! Time: " + msToReadable(time));
             setState('idle');
+
+            handleWon();
         }
     }, [state])
 
