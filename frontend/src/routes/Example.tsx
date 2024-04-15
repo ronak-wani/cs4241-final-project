@@ -6,12 +6,14 @@ function Example() {
 
     async function postData() {
 
-        const data: employeeFeedback = {
-            name: 'Mike',
-            feedback: 'is an SA'
+        const data= {
+            username: 'Mike',
+            score: 12,
+            game: 'is an SA'
         }
         //sends a post request the /api/high-score
-        const res = await axios.post("/api/example", data);
+        //changed examples.tsx and MongoDB setup completed
+        const res = await axios.post("/api/dbScoreRoutes", data);
         if(res.status === 200) {
             console.log("added feedback");
         }
