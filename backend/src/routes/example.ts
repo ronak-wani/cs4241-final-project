@@ -5,6 +5,8 @@ const router: Router = express.Router();
 
 let database: employeeFeedback[] = [];
 
+//get all
+
 router.post("/", async function (req: Request, res: Response) {
     const test: employeeFeedback = req.body;
     database.push(test);
