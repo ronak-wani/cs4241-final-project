@@ -22,8 +22,10 @@
 
 .tile_component.isFlipped {
     background-color: darkseagreen;
+    cursor: default;
 }
 
 .tile_component.isDone {
     background-color: cadetblue;
+    cursor: default;
 }
