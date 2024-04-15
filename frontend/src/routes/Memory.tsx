@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Memory.css';
 
-const values = [
-    'Blue', 'Green', 'Red', 'Blue', 'Green', 'Red', 'Yellow', 'Yellow', 'Purple', 'Purple', 'Orange', 'Orange'
-];
-
 // when interacting with the tile object, these are the props that it accepts
 interface tileProps {
     value: string;
@@ -26,9 +22,14 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
 
 // function for the game itself
 function Memory() {
+    function createTiles(rows: number, cols: number) {
+        const values = Array.from({ length: rows * cols / 2 }, (_, index) => index);
+        const shuffledValues = [...values, ...values].sort(() => Math.random() - 0.5);
+        return shuffledValues.map((value) => String(value));
+    }
 
     // useState hooks to manage state of tiles and IDs of flipped ones
-    const [tiles] = useState<string[]>(values);
+    const [tiles] = useState<string[]>(createTiles(4, 4));
     const [flippedTiles, setFlippedTiles] = useState<number[]>([]);
     const [doneTiles, setDoneTiles] = useState<number[]>([]);
 
