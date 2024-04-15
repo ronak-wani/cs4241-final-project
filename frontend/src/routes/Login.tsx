@@ -7,14 +7,14 @@ const CLIENT_ID = "f0bb48553c39a2d19844";
 
 function Login() {
     const [rerender, setRerender] = useState(false);
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState({
+        login: null
+    })
     let githubUser = {}
     useEffect(() => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const codeParams = urlParams.get("code");
-
-
 
         if (codeParams && localStorage.getItem("accessToken") === null) {
             const getAccessToken = async () => {
@@ -89,7 +89,7 @@ function Login() {
                  {Object.keys(userData).length !== 0 ?
                     <>
                         <h4>User Data: </h4>
-                        <></>
+                        <>GitHub Username: {userData.login}</>
                     </>
                      :
                      <>
