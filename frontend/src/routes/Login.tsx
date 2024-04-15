@@ -17,13 +17,17 @@ function Login() {
         //grab access token from backend only if null
         if(codeParams && (localStorage.getItem("accessToken") === null)){
             const getAccessToken = async () =>{
-                await fetch("http://localhost:3000/getAccessToken?code=" + codeParams,{
+                console.log("inside access token");
+                await fetch("http://localhost:3001/getAccessToken?code=" + codeParams,{
                     method: "GET",
+                    mode: "cors",
+                    credentials: "include",
                 }).then((response) =>{
                     return response.json();
                 }).then((data) =>{
                     console.log(data);
                     if(data.access_token){
+                        console.log(data.access_token);
                         localStorage.setItem("accessToken", data.access_token);
                         setRerender(!rerender);
                     }
