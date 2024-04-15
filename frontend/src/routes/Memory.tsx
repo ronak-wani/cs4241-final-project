@@ -40,10 +40,11 @@ function Memory() {
         return shuffledValues.map((value) => String(value));
     }
 
-    const rows = 3, cols = 4;
+    const rows = 1, cols = 4;
     const [tiles] = useState<string[]>(createTiles(rows, cols));
-    const [flippedTiles, setFlippedTiles] = useState<number[]>([]);
-    const [doneTiles, setDoneTiles] = useState<number[]>([]);
+    const [flipped, setFlipped] = useState<number[]>([]);
+    const [matched, setMatched] = useState<number[]>([]);
+
     const [time, setTime] = useState<number>(0);
     const [startTime, setStartTime] = useState<number>((new Date()).getTime());
     const [intervalID, setIntervalID] = useState<NodeJS.Timer>();
@@ -63,34 +64,34 @@ function Memory() {
         // if two tiles are already flipped
         // or the clicked tile is already flipped
         // or the clicked tile is already matched
-        if (flippedTiles.length >= 2 || flippedTiles.includes(tileID) || doneTiles.includes(tileID)) {
+        if (flipped.length >= 2 || flipped.includes(tileID) || matched.includes(tileID)) {
             return;
         }
 
-        if (flippedTiles.length === 1) {
+        if (flipped.length === 1) {
             // if two tiles have just been flipped
 
-            if (tiles[flippedTiles[0]] === tiles[tileID]) {
+            if (tiles[flipped[0]] === tiles[tileID]) {
                 // if the two tiles match
 
                 // check if all tiles have been matched
-                if (doneTiles.length + 2 === tiles.length) {
+                if (matched.length + 2 === tiles.length) {
                     clearInterval(intervalID);
                     alert("You won! Time: " + msToReadable(time) + " seconds");
                 }
 
                 // add them to the doneTiles array
-                setDoneTiles([...doneTiles, flippedTiles[0], tileID]);
+                setMatched([...matched, flipped[0], tileID]);
             }
 
             // set a timer to hide them
             setTimeout(() => {
-                setFlippedTiles([]);
+                setFlipped([]);
             }, 1000);
         }
 
         // flip the tile that was clicked
-        setFlippedTiles([...flippedTiles, tileID]);
+        setFlipped([...flipped, tileID]);
     };
 
     function msToReadable(time: number) {
@@ -109,13 +110,13 @@ function Memory() {
             <p>
                 {msToReadable(time)} seconds
             </p>
-            <div className={`mt-24 gap-4 max-w-screen-sm mx-auto grid ${'grid-cols-' + cols}`}>
+            <div className={`mt-24 gap-4 max-w-screen-sm mx-auto grid grid-cols-4`}>
                 {tiles.map((value, index) => (
                     <Tile
                         key={index}
                         value={value}
-                        isFlipped={flippedTiles.includes(index)}
-                        isDone={doneTiles.includes(index)}
+                        isFlipped={flipped.includes(index)}
+                        isDone={matched.includes(index)}
                         onClick={() => handleTileClick(index)}
                     />
                 ))}

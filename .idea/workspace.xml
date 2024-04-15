@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="532714bb-dc25-4bf9-956b-0d62cea1499d" name="Changes" comment="memory game added timer, jank port to tailwind">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="532714bb-dc25-4bf9-956b-0d62cea1499d" name="Changes" comment="merge dev">
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
       <workItem from="1713118011596" duration="326000" />
       <workItem from="1713118375970" duration="4622000" />
       <workItem from="1713123792674" duration="474000" />
-      <workItem from="1713207089444" duration="3696000" />
+      <workItem from="1713207089444" duration="4010000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: tile flipped state is solely managed in flippedTiles">
       <option name="closed" value="true" />
@@ -118,7 +118,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713210900137</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="memory game added timer, jank port to tailwind">
+      <option name="closed" value="true" />
+      <created>1713210999022</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713210999022</updated>
+    </task>
+    <task id="LOCAL-00007" summary="merge dev">
+      <option name="closed" value="true" />
+      <created>1713211163035</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713211163035</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +146,7 @@
     <MESSAGE value="refactor: simplify tile values state, default cursor on flipped or done tiles, matching refactor" />
     <MESSAGE value="feat: tiles are numbers, randomize and refactor tiles" />
     <MESSAGE value="memory game added timer, jank port to tailwind" />
-    <option name="LAST_COMMIT_MESSAGE" value="memory game added timer, jank port to tailwind" />
+    <MESSAGE value="merge dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge dev" />
   </component>
 </project>
