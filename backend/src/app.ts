@@ -5,6 +5,7 @@ import passport from 'passport';
 import session from 'express-session';
 const app = express();
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 app.use(express.json());
 
@@ -24,8 +25,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(cors());
+app.use(bodyParser.json());
+
 app.use("/api/example", example);
-app.use("/auth", auth);
+app.use("/", auth);
 
 app.listen(3001, () => {
     console.log("started");
