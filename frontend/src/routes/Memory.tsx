@@ -40,26 +40,49 @@ function Memory() {
         return shuffledValues.map((value) => String(value));
     }
 
-    const rows = 1, cols = 4;
-    const [tiles] = useState<string[]>(createTiles(rows, cols));
+    const [rows, setRows] = useState<number>(1);
+    const [cols, setCols] = useState<number>(4);
+    const [tiles, setTiles] = useState<string[]>([]);
     const [flipped, setFlipped] = useState<number[]>([]);
     const [matched, setMatched] = useState<number[]>([]);
 
     const [time, setTime] = useState<number>(0);
-    const [startTime, setStartTime] = useState<number>((new Date()).getTime());
+    const [startTime, setStartTime] = useState<number>(0);
     const [intervalID, setIntervalID] = useState<NodeJS.Timer>();
 
+    // states: idle, play, won
+    const [state, setState] = useState<string>('idle');
+
     useEffect(() => {
-        setStartTime((new Date()).getTime());
+        if (state !== 'play') return;
+
+        clearInterval(intervalID);
         setIntervalID(
             setInterval(() => {
                 setTime((new Date()).getTime() - startTime)
             }, 10)
         );
-    }, [])
+    }, [startTime])
+
+    useEffect(() => {
+        if (state === 'play') {
+            setTiles(createTiles(rows, cols));
+            setFlipped([]);
+            setMatched([]);
+
+            setStartTime((new Date()).getTime());
+        }
+        else if (state === 'won') {
+            clearInterval(intervalID);
+            alert("You won! Time: " + msToReadable(time));
+            setState('idle');
+        }
+    }, [state])
 
     // function that handles the tile flipping and matching logic
     const handleTileClick = (tileID: number) => {
+        if (state !== 'play') return;
+
         // don't flip if:
         // if two tiles are already flipped
         // or the clicked tile is already flipped
@@ -76,8 +99,7 @@ function Memory() {
 
                 // check if all tiles have been matched
                 if (matched.length + 2 === tiles.length) {
-                    clearInterval(intervalID);
-                    alert("You won! Time: " + msToReadable(time) + " seconds");
+                    setState('won');
                 }
 
                 // add them to the doneTiles array
@@ -107,10 +129,17 @@ function Memory() {
     // renders tile component for each tile in the game
     return (
         <div className="h-screen flex flex-col justify-center align-items-center text-center">
-            <p>
-                {msToReadable(time)} seconds
-            </p>
-            <div className={`mt-24 gap-4 max-w-screen-sm mx-auto grid grid-cols-4`}>
+            <p>{msToReadable(time)}</p>
+            <div className={`flex justify-center`}>
+                {state === 'idle' || state === 'won' ? (
+                    <button type="button" onClick={() => setState('play')}
+                            className="w-min text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                        Play
+                    </button>
+                ) : ''}
+            </div>
+            <div
+                className={`gap-4 max-w-screen-sm mx-auto grid grid-cols-4 ${state === 'play' ? '' : 'opacity-25'}`}>
                 {tiles.map((value, index) => (
                     <Tile
                         key={index}
