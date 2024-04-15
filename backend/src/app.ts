@@ -30,7 +30,7 @@ app.use(passport.session());
 //app.use(cors({ maxAge: 84600 }));
 app.use(
     cors({
-        origin: "http://localhost:3000/", // React app's origin
+        origin: "http://localhost:3000", // React app's origin
         credentials: true,
     })
 )
