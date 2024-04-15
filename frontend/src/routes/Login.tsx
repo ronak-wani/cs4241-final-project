@@ -48,15 +48,15 @@ function Login() {
         })
     }
 
-    function loginWithGithub(){
-        window.location.assign("https://github.com/login/oauth/authorize?client_id="+CLIENT_ID);
-    }
+    // function loginWithGithub(){
+    //     window.location.assign("https://github.com/login/oauth/authorize?client_id="+CLIENT_ID);
+    // }
 
     return (
         <>
             <NavBar />
-        <h1>Login</h1>
-        <Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>
+        <h1>Login Success</h1>
+        {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
             {localStorage.getItem("accessToken") ?
              <>
                  <h3>We have access token</h3>

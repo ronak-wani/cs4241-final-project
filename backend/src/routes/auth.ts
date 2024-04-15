@@ -3,7 +3,9 @@ import passport from 'passport';
 const router: Router = express.Router();
 import cors from 'cors';
 //const fetch = (...args:any[]) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-import fetch from 'node-fetch'
+//import fetch from 'node-fetch'
+import { RequestInfo, RequestInit } from 'node-fetch';
+const fetch = (url:RequestInfo, init?:RequestInit) => import('node-fetch').then(module => module.default(url, init));
 import bodyParser from 'body-parser';
 
 const CLIENT_ID = "f0bb48553c39a2d19844";

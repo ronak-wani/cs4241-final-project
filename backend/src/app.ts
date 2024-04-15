@@ -3,9 +3,11 @@ import example from "./routes/example";
 import auth from "./routes/auth";
 import passport from 'passport';
 import session from 'express-session';
-const app = express();
 import cors from 'cors';
 import bodyParser from 'body-parser';
+
+const app = express();
+
 
 app.use(express.json());
 
