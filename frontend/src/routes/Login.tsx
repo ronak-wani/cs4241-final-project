@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../components/NavBar";
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 const CLIENT_ID = "f0bb48553c39a2d19844";
 
@@ -18,18 +19,9 @@ function Login() {
         if(codeParams && (localStorage.getItem("accessToken") === null)){
             const getAccessToken = async () =>{
                 console.log("inside access token");
-                await fetch("http://localhost:3001/getAccessToken?code=" + codeParams,{
-                    method: "GET",
-                    mode: "cors",
-                    credentials: "include",
-                }).then((response) =>{
-                    return response.json();
-                }).then((data) =>{
-                    console.log(data);
-                    if(data.access_token){
-                        console.log(data.access_token);
-                        localStorage.setItem("accessToken", data.access_token);
-                        setRerender(!rerender);
+                await axios.get("http://localhost:3001/getAccessToken?code=" + codeParams,{
+                    headers: {
+                        credentials: "include"
                     }
                 })
             }
