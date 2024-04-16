@@ -10,12 +10,17 @@ function Homepage() {
 
     return (
         <>
+            <div className="login-entry">
+                <h1>Homepage</h1>
+                <h1>Please Login</h1>
+                <button
+                    className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                    style={{width: "30%"}} onClick={loginWithGithub}>Login With GitHub
+                </button>
+            </div>
 
-        <h1>Homepage</h1>
-    <h1>Login</h1>
-    <Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>
         </>
-            );
+    );
 }
 
 export default Homepage;

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f362c5c3-e61c-4f0c-8201-b7ac78f827d9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/Homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Homepage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,20 +26,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "login-function",
-    "last_opened_file_path": "D:/WPI/Sophomore/CS_4241/a4-saitejasunku",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\WPI\\Sophomore\\CS_4241\\cs4241-final-project\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;login-function&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WPI/Sophomore/CS_4241/a4-saitejasunku&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WPI\\Sophomore\\CS_4241\\cs4241-final-project\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -54,7 +56,8 @@
       <option name="presentableId" value="Default" />
       <updated>1713118276115</updated>
       <workItem from="1713118277176" duration="17173000" />
-      <workItem from="1713195708069" duration="10998000" />
+      <workItem from="1713195708069" duration="11987000" />
+      <workItem from="1713269913071" duration="2653000" />
     </task>
     <servers />
   </component>

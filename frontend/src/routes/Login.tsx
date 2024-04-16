@@ -77,32 +77,44 @@ function Login() {
     return (
         <>
             <NavBar />
+            <div className="login-entry login-page">
         <h1>Login Success</h1>
+            <h2>Welcome</h2>
         {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
             {localStorage.getItem("accessToken") ?
-             <>
-                 <h3>We have access token</h3>
-                 <button onClick={() => {localStorage.removeItem("accessToken"); setRerender(!rerender); window.location.href="/";}}>Logout</button>
-                 <h3>Get User data</h3>
-                 {/*<button onClick={getUserData}>Get Data</button>*/}
+                <>
 
-                 {Object.keys(userData).length !== 0 ?
-                    <>
-                        <h4>User Data: </h4>
-                        <>GitHub Username: {userData.login}</>
-                    </>
-                     :
-                     <>
-                     </>
-                 }
-             </>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                style={{width: "30%"}} onClick={() => {
+                            localStorage.removeItem("accessToken");
+                            setRerender(!rerender);
+                            window.location.href = "/";
+                        }}>Logout
+                        </button>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                                style={{width: "30%"}} onClick={() => window.location.href = "http://localhost:3000/memory"}>Go Play</button>
+
+                        <h2>User Data: </h2>
+                        {/*<button onClick={getUserData}>Get Data</button>*/}
+
+                        {Object.keys(userData).length !== 0 ?
+                            <>
+                                <>GitHub Username: {userData.login}</>
+                            </>
+                            :
+                            <>
+                            </>
+                        }
+
+                </>
                 :
                 <>
                     <h3>User is not logged in</h3>
                 </>
             }
+            </div>
         </>
-            );
+    );
 }
 
 export default Login;
