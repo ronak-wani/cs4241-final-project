@@ -53,11 +53,26 @@ function Memory() {
 
     // states: idle, play, won
     const [state, setState] = useState<string>('idle');
+    const [username, setUsername] = useState<string>('');
+
+    useEffect(() => {
+        const getUserData = async () => {
+            const response = await fetch("http://localhost:5000/getUserData", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                },
+            });
+            const data = await response.json();
+            setUsername(data.login);
+        };
+        getUserData();
+    }, []);
 
     const handleWon = async () => {
-        console.log(time, (new Date()).getTime());
+        console.log(time, (new Date()).getTime(), username);
         const data = {
-            username: 'Ronak',
+            username: username,
             score: time,
             game: 'Memory'
         }
