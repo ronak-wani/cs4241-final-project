@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import '../css/Memory.css';
-import axios from 'axios';
+import axios from "axios";
+
+import { user } from '../LoginStore';
 
 // when interacting with the tile object, these are the props that it accepts
 interface tileProps {
@@ -41,7 +43,7 @@ function Memory() {
         return shuffledValues.map((value) => String(value));
     }
 
-    const [rows, setRows] = useState<number>(3);
+    const [rows, setRows] = useState<number>(1);
     const [cols, setCols] = useState<number>(4);
     const [tiles, setTiles] = useState<string[]>([]);
     const [flipped, setFlipped] = useState<number[]>([]);
@@ -54,14 +56,24 @@ function Memory() {
     // states: idle, play, won
     const [state, setState] = useState<string>('idle');
 
+    useEffect(() => {
+        console.log(user)
+    }, []);
+
     const handleWon = async () => {
-        console.log(time, (new Date()).getTime());
-        const data = {
-            username: 'Ronak',
+        console.log(time, (new Date()).getTime(), user);
+
+        const data= {
+            username: user,
             score: time,
-            game: 'Memory'
+            game: 'memory-easy',
         }
-        const response = await axios.post("/api/dbScoreRoutes", data)
+        //sends a post request the /api/high-score
+        //changed examples.tsx and MongoDB setup completed
+        const res = await axios.post("/api/dbScoreRoutes", data);
+        if(res.status === 200) {
+            console.log("added feedback");
+        }
     }
 
     useEffect(() => {
@@ -142,7 +154,7 @@ function Memory() {
     // renders tile component for each tile in the game
     return (
         <div className="h-screen flex flex-col justify-center align-items-center text-center">
-            <p>{msToReadable(time)}</p>
+            <p>{msToReadable(time)}{user}</p>
             <div className={`flex justify-center`}>
                 {state === 'idle' || state === 'won' ? (
                     <button type="button" onClick={() => setState('play')}

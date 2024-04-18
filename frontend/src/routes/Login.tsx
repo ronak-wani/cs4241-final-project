@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
+import { setUser } from "../LoginStore";
+
 const CLIENT_ID = "f0bb48553c39a2d19844";
 
 function Login() {
@@ -23,8 +25,10 @@ function Login() {
                 },
             });
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setUserData(data);
+            console.log(typeof(data.login), data.login)
+            setUser(data.login);
         };
 
         if (codeParams && localStorage.getItem("accessToken") === null) {
