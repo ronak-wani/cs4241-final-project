@@ -43,3 +43,5 @@ npm-debug.log
 .idea
 .idea/workspace.xml
 *.xml
+frontend/.env
+.idea/workspace.xml
