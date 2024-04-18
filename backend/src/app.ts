@@ -5,11 +5,15 @@ import passport from 'passport';
 import session from 'express-session';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import connectionDB from './routes/dbConnection'
+import dbScoreRoutes from "./routes/dbScoreRoutes";
 
+const score = require("./scoreModel");
 const app = express();
 
 
 app.use(express.json());
+connectionDB;
 
 //sessions middleware
 app.use(session({
@@ -37,9 +41,10 @@ app.use(
 app.use(bodyParser.json());
 
 app.use("/api/example", example);
+app.use("/api/dbScoreRoutes", dbScoreRoutes);
 app.use("/", auth);
 
-app.listen(3001, () => {
+app.listen(5000, () => {
     console.log("started");
 });
 

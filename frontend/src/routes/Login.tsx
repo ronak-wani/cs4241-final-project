@@ -20,7 +20,7 @@ function Login() {
             const getAccessToken = async () => {
                 console.log("inside access Token");
                 try {
-                    const response = await axios.get("http://localhost:3001/getAccessToken?code=" + codeParams, {
+                    const response = await axios.get("http://localhost:5000/getAccessToken?code=" + codeParams, {
                         headers: {
                             mode: "no-cors",
                             credentials: "include"
@@ -40,6 +40,21 @@ function Login() {
             };
             getAccessToken();
         }
+
+        const getUserData = async () => {
+            const response = await fetch("http://localhost:5000/getUserData", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                },
+            });
+            const data = await response.json();
+            console.log(data);
+            setUserData(data);
+        };
+
+        getUserData();
+
     }, []);
 
 
@@ -55,19 +70,7 @@ function Login() {
     //     setUserData(data);
     // }
     useEffect(() => {
-        const getUserData = async () => {
-            const response = await fetch("http://localhost:3001/getUserData", {
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
-                },
-            });
-            const data = await response.json();
-            console.log(data);
-            setUserData(data);
-        };
 
-        getUserData();
     }, []);
 
     // function loginWithGithub(){
