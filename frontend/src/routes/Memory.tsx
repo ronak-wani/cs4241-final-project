@@ -135,12 +135,12 @@ function Memory() {
     // renders tile component for each tile in the game
     return (
         <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
-            <div className="w-2/3 p-8 bg-green-300">
+            <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
             <p className="font-bold text-white">{msToReadable(time)}</p>
             <div className={`flex justify-center`}>
                 {state === 'idle' || state === 'won' ? (
                     <button type="button" onClick={() => setState('play')}
-                            className="bg-green-900 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
+                            className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
                         Play
                     </button>
                 ) : ''}
