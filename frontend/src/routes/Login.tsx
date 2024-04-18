@@ -11,10 +11,21 @@ function Login() {
         login: null
     })
     let githubUser = {}
-    useEffect(() => {
+    useEffect( () => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const codeParams = urlParams.get("code");
+        const getUserData = async () => {
+            const response = await fetch("http://localhost:5000/getUserData", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                },
+            });
+            const data = await response.json();
+            console.log(data);
+            setUserData(data);
+        };
 
         if (codeParams && localStorage.getItem("accessToken") === null) {
             const getAccessToken = async () => {
@@ -38,22 +49,10 @@ function Login() {
                     console.error("Error fetching access token:", error);
                 }
             };
-            getAccessToken();
+            getAccessToken().then(() => {getUserData()});
+        } else {
+            getUserData();
         }
-
-        const getUserData = async () => {
-            const response = await fetch("http://localhost:5000/getUserData", {
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
-                },
-            });
-            const data = await response.json();
-            console.log(data);
-            setUserData(data);
-        };
-
-        getUserData();
 
     }, []);
 
