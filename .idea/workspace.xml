@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f362c5c3-e61c-4f0c-8201-b7ac78f827d9" name="Changes" comment="feat: game states and play button">
+    <list default="true" id="f362c5c3-e61c-4f0c-8201-b7ac78f827d9" name="Changes" comment="Working project-styling base branch">
+      <change afterPath="$PROJECT_DIR$/frontend/public/green-leaves-plant-aesthetic-5k-3840x2160-3559.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/Homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +42,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\klaud\WebstormProjects\cs4241-final-project\frontend\public" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -57,6 +66,15 @@
       <workItem from="1713195708069" duration="11987000" />
       <workItem from="1713269913071" duration="2653000" />
     </task>
+    <task id="LOCAL-00001" summary="Working project-styling base branch">
+      <option name="closed" value="true" />
+      <created>1713465334179</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713465334179</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -64,6 +82,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: game states and play button" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: game states and play button" />
+    <MESSAGE value="Working project-styling base branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working project-styling base branch" />
   </component>
 </project>

@@ -6,16 +6,16 @@ function NavBar() {
             backgroundImage: "url('frontend/public/logo512.png')",
             backgroundSize: 'cover',
         }}
-             className={"h-16 flex px-6 items-center w-screen bg-emerald-200 gap-4"}>
-            <a className="font-bold text-green-950 hover:text-green-600"
+             className={"h-16 flex px-6 items-center w-screen bg-green-700 gap-4"}>
+            <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-500"
                href={"/"}>Homepage</a>
-            <a className="font-bold text-green-950 hover:text-green-600"
+            <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-500"
                href={"/login"}>Login</a>
-            <a className="font-bold text-green-950 hover:text-green-600"
+            <a className=" font-mono font-bold text-2xl text-green-950 hover:text-emerald-500"
                href={"/leaderboard"}>Leaderboard</a>
-            <a className="font-bold text-green-950 hover:text-green-600"
+            <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-500"
                href={"/memory"}>Memory</a>
-            <a className="font-bold text-green-950 hover:text-green-600"
+            <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-500"
                href={"/example"}>Example</a>
         </div>
     );
