@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import {employeeFeedback} from "common/src/types";
-import axios from "axios";
 import {Outlet, RouterProvider} from "react-router";
 import NavBar from "./components/NavBar";
 import {createBrowserRouter} from "react-router-dom";
