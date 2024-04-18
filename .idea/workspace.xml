@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="532714bb-dc25-4bf9-956b-0d62cea1499d" name="Changes" comment="feat: game states and play button">
+    <list default="true" id="532714bb-dc25-4bf9-956b-0d62cea1499d" name="Changes" comment="added CSS styling to properly render tiles on the page. Still need to implement matching functionality">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,14 +50,14 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "basic-game-functionality",
+    "git-widget-placeholder": "project-styling",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
-    "ts.external.directory.path": "/Users/gabrielshiu/WebstormProjects/cs4241-final-project/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Users\\klaud\\WebstormProjects\\cs4241-final-project\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -165,6 +168,7 @@
     <MESSAGE value="merge dev" />
     <MESSAGE value="refactor: renamed flipped and done aka matched tile state variables" />
     <MESSAGE value="feat: game states and play button" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: game states and play button" />
+    <MESSAGE value="added CSS styling to properly render tiles on the page. Still need to implement matching functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="added CSS styling to properly render tiles on the page. Still need to implement matching functionality" />
   </component>
 </project>

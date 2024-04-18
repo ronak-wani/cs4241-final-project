@@ -40,7 +40,7 @@ function Memory() {
         return shuffledValues.map((value) => String(value));
     }
 
-    const [rows, setRows] = useState<number>(1);
+    const [rows, setRows] = useState<number>(3);
     const [cols, setCols] = useState<number>(4);
     const [tiles, setTiles] = useState<string[]>([]);
     const [flipped, setFlipped] = useState<number[]>([]);
