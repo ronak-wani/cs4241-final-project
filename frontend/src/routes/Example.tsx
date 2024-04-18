@@ -20,7 +20,7 @@ function Example() {
     }
 
     async function getData() {
-        const res = await axios.get("api/example");
+        const res = await axios.get("api/dbScoreRoutes");
         console.log(res.data);
     }
 

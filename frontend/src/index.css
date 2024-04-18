@@ -15,3 +15,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.login-entry{
+  text-align: center;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 100px;
+  margin: 100px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.login-page{
+  background: none;
+  color: #000;
+  padding: 10px;
+}
