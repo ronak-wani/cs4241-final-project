@@ -45,3 +45,5 @@ npm-debug.log
 *.xml
 frontend/.env
 .idea/workspace.xml
+/.idea
+frontend/.env
