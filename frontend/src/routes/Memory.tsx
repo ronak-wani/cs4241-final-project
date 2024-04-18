@@ -54,7 +54,7 @@ function Memory() {
     const [state, setState] = useState<string>('idle');
 
     const handleWon = () => {
-        console.log(time, (new Date()).getTime());
+        // console.log('Finished. Time (ms): ', time, ' Timestamp (ms): ', (new Date()).getTime());
     }
 
     useEffect(() => {
