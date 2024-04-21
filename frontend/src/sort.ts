@@ -1,4 +1,8 @@
-import {score} from "common/src/types";
+type score = {
+    username: string;
+    score: number;
+    createdAt: Date;
+}
 
 function sort(smaller: (a:score, b:score) => boolean, scoreArray: score[]): score[] {
     let tempScores: score[] = scoreArray;
