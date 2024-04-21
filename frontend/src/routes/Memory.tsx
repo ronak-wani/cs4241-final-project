@@ -156,12 +156,13 @@ function Memory() {
 
     // renders tile component for each tile in the game
     return (
-        <div className="h-screen flex flex-col justify-center align-items-center text-center">
-            <p>{msToReadable(time)}</p>
+        <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
+            <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
+            <p className="font-bold text-white">{msToReadable(time)}</p>
             <div className={`flex justify-center`}>
                 {state === 'idle' || state === 'won' ? (
                     <button type="button" onClick={() => setState('play')}
-                            className="w-min text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                            className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
                         Play
                     </button>
                 ) : ''}
@@ -177,6 +178,7 @@ function Memory() {
                         onClick={() => handleTileClick(index)}
                     />
                 ))}
+            </div>
             </div>
         </div>
     );
