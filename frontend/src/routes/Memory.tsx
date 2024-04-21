@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../css/Memory.css';
+import axios from 'axios';
 
 // when interacting with the tile object, these are the props that it accepts
 interface tileProps {
@@ -52,9 +53,30 @@ function Memory() {
 
     // states: idle, play, won
     const [state, setState] = useState<string>('idle');
+    const [username, setUsername] = useState<string>('');
 
-    const handleWon = () => {
-        console.log(time, (new Date()).getTime());
+    useEffect(() => {
+        const getUserData = async () => {
+            const response = await fetch("http://localhost:5000/getUserData", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                },
+            });
+            const data = await response.json();
+            setUsername(data.login);
+        };
+        getUserData();
+    }, []);
+
+    const handleWon = async () => {
+        console.log(time, (new Date()).getTime(), username);
+        const data = {
+            username: username,
+            score: time,
+            game: 'Memory'
+        }
+        const response = await axios.post("/api/dbScoreRoutes", data)
     }
 
     useEffect(() => {
