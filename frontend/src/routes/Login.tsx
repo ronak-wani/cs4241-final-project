@@ -79,29 +79,30 @@ function Login() {
     return (
         <>
             <NavBar />
-            <div className="login-entry login-page">
-        <h1>Login Success</h1>
-            <h2>Welcome</h2>
+        <div className="flex flex-col justify-center items-center align-items-center text-center login-entry login-page">
+        <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
+                <h1 className="font-bold text-white">Login Success</h1>
+            <h2 className="font-bold text-white">Welcome</h2>
         {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
             {localStorage.getItem("accessToken") ?
                 <>
 
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                        <button className="bg-green-950 hover:bg-emerald-300 text-white font-bold py-2 px-4 rounded-full"
                                 style={{width: "30%"}} onClick={() => {
                             localStorage.removeItem("accessToken");
                             setRerender(!rerender);
                             window.location.href = "/";
                         }}>Logout
                         </button>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                        <button className="bg-green-950 hover:bg-emerald-300 text-white font-bold py-2 px-4 rounded-full"
                                 style={{width: "30%"}} onClick={() => window.location.href = "http://localhost:3000/memory"}>Go Play</button>
 
-                        <h2>User Data: </h2>
+                        <h2 className="font-bold text-white">User Data: </h2>
                         {/*<button onClick={getUserData}>Get Data</button>*/}
 
                         {Object.keys(userData).length !== 0 ?
                             <>
-                                <>GitHub Username: {userData.login}</>
+                                <div className="font-bold text-white">GitHub Username: {userData.login}</div>
                             </>
                             :
                             <>
@@ -111,9 +112,10 @@ function Login() {
                 </>
                 :
                 <>
-                    <h3>User is not logged in</h3>
+                    <h3 className="font-bold text-white">User is not logged in</h3>
                 </>
             }
+            </div>
             </div>
         </>
     );
