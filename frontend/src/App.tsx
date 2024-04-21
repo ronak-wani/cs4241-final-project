@@ -8,6 +8,7 @@ import Example from "./routes/Example";
 import LeaderBoard from "./routes/Leaderboard";
 import Memory from "./routes/Memory";
 import Login from "./routes/Login";
+import Instructions from "./routes/Instructions";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ function App() {
         {
           path: "example",
           element: <Example />,
+        },
+        {
+          path: "instructions",
+          element: <Instructions />,
         },
         {
           path: "leaderboard",

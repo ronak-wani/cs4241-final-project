@@ -8,6 +8,7 @@ function NavBar() {
             <a href={"/login"}>Login</a>
             <a href={"/leaderboard"}>Leaderboard</a>
             <a href={"/memory"}>Memory</a>
+            <a href={"/instructions"}>Instructions</a>
             <a href={"/example"}>Example</a>
         </div>
     );
