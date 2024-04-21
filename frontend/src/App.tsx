@@ -7,8 +7,9 @@ import Homepage from "./routes/Homepage";
 import Example from "./routes/Example";
 import LeaderBoard from "./routes/Leaderboard";
 import Memory from "./routes/Memory";
-import Login from "./routes/Login";
 import Instructions from "./routes/Instructions";
+import Login from "./routes/Login";
+
 
 function App() {
   const router = createBrowserRouter([
