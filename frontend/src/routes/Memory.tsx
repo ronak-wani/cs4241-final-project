@@ -30,7 +30,7 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
         content = value;
     }
     else {
-        content = '!';
+        content = '😊';
     }
 
     return (
