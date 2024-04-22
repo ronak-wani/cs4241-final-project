@@ -56,13 +56,14 @@ function Memory() {
 
     useEffect(() => {
         const getUserData = async () => {
-            const response = await fetch("http://localhost:5000/getUserData", {
+            const response = await fetch("/api/auth/getUserData", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("accessToken"),
                 },
             });
             const data = await response.json();
+            console.log(data);
             setUsername(data.login);
         };
         getUserData();
@@ -75,6 +76,7 @@ function Memory() {
             score: time,
             game: 'memory-' + difficulty,
         }
+        console.log(data);
         const response = await axios.post("/api/dbScoreRoutes", data)
     }
 
