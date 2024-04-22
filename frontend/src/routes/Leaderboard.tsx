@@ -73,30 +73,30 @@ function LeaderBoard() {
     }
 
     return (
-        <div className={"h-full flex flex-col bg-green-50 pt-8 items-center justify-center"}>
+        <div className={"h-full flex flex-col pt-8 items-center justify-center"}>
             <h1 className={"font-bold text-6xl mb-16"}>Leaderboard</h1>
             <div className={"flex mb-10 gap-4"}>
                 <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"memory-easy"} />
+                                        setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"Memory - Easy"}/>
                 <DifficultySelectButton selected={activeButton} buttonNumber={1} setSelected={setActiveButton}
                                         setDifficulty={() => {setDifficulty("Memory")}} difficulty={"Memory"} />
             </div>
             <table>
             <thead>
                     <tr>
-                        <td className={"font-bold w-12 text-center border-2"}>#</td>
-                        <td onClick={updateSortDate} className={"font-bold w-64 text-center border-2"}>date</td>
-                        <td onClick={updateSortUsername} className={"font-bold w-32 text-center border-2"}>Username</td>
-                        <td onClick={updateSortRank} className={"font-bold w-32 text-center border-2"}>Score</td>
+                        <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black"}>#</td>
+                        <td onClick={updateSortDate} className={"font-bold w-64 bg-green-700 text-center border-2 border-black"}>date</td>
+                        <td onClick={updateSortUsername} className={"font-bold w-32 bg-green-700 text-center border-2 border-black"}>Username</td>
+                        <td onClick={updateSortRank} className={"font-bold w-32 bg-green-700 text-center border-2 border-black"}>Score</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="overflow-y-scrolls h-min">
                     {scores.map((score: score, index: number) => (
                         <tr>
-                            <td className={"w-12 text-center border-2"}>{index+1}</td>
-                            <td className={"w-64 text-center border-2"}>{formatString(score.createdAt.toString())}</td>
-                            <td className={"w-32 text-center border-2"}>{score.username}</td>
-                            <td className={"w-32 text-center border-2"}>{score.score}</td>
+                            <td className={"w-12 bg-emerald-200 text-center border-2 border-black"}>{index+1}</td>
+                            <td className={"w-64 bg-emerald-200 text-center border-2 border-black"}>{formatString(score.createdAt.toString())}</td>
+                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.username}</td>
+                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.score}</td>
                         </tr>
                     ))}
                 </tbody>

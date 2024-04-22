@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../components/NavBar";
-import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
 const CLIENT_ID = "f0bb48553c39a2d19844";
@@ -79,7 +78,7 @@ function Login() {
     return (
         <>
             <NavBar />
-        <div className="flex flex-col justify-center items-center align-items-center text-center login-entry login-page">
+        <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
         <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
                 <h1 className="font-bold text-white">Login Success</h1>
             <h2 className="font-bold text-white">Welcome</h2>
