@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f362c5c3-e61c-4f0c-8201-b7ac78f827d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/routes/Instructions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes/Memory.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,14 +27,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "instructions",
+    "git-widget-placeholder": "difficulty-levels",
     "last_opened_file_path": "D:/WPI/Sophomore/CS_4241/a4-saitejasunku",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\WPI\\Sophomore\\CS_4241\\cs4241-final-project\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Users/gabrielshiu/WebstormProjects/cs4241-final-project/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -61,9 +58,22 @@
       <workItem from="1713269913071" duration="2653000" />
       <workItem from="1713710738444" duration="4292000" />
     </task>
+    <task id="LOCAL-00001" summary="difficulty levels added">
+      <option name="closed" value="true" />
+      <created>1713803513274</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713803513274</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="difficulty levels added" />
+    <option name="LAST_COMMIT_MESSAGE" value="difficulty levels added" />
   </component>
 </project>

@@ -22,11 +22,22 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
         statusClass = 'bg-green-200 cursor-default';
     }
 
+    let content = '';
+    if (isDone) {
+        content = '✓';
+    }
+    else if (isFlipped) {
+        content = value;
+    }
+    else {
+        content = '!';
+    }
+
     return (
-        <div className={`flex-grow h-32 flex justify-center items-center text-4xl font-serif transition duration-200 ${statusClass}`}
+        <div className={`flex-grow self-stretch flex justify-center items-center text-4xl font-serif transition duration-200 ${statusClass}`}
              onClick={onClick}
         >
-            {isFlipped ? value : ''}
+            {content}
         </div>
     );
 }
@@ -176,42 +187,51 @@ function Memory() {
     else if (cols === 5) grid_cols = 'grid-cols-5';
     else if (cols === 8) grid_cols = 'grid-cols-8';
 
-    // renders tile component for each tile in the game
     return (
         <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
-            <div className="bg-gradient-to-r from-black to-green-500 w-2/3 gap-4 p-8 bg-green-300 rounded-full">
-                <div className={`flex justify-center`}>
-                    {state === 'idle' || state === 'won' ? (
+            {state === 'play' ? (
+                <div className="bg-gradient-to-r from-black to-green-500 w-2/3 h-5/6 gap-4 p-8 bg-green-300 rounded-3xl">
+                    <p className="font-bold text-white text-5xl mb-4">{msToReadable(time)}</p>
+                    <div
+                        className={`gap-4 max-w-screen-sm h-5/6 mx-auto grid ${grid_cols} opacity-25'}`}>
+                        {tiles.map((value, index) => (
+                            <Tile
+                                key={index}
+                                value={value}
+                                isFlipped={flipped.includes(index)}
+                                isDone={matched.includes(index)}
+                                onClick={() => handleTileClick(index)}
+                            />
+                        ))}
+                    </div>
+                </div>
+                ) : (
+                <div className="flex justify-center items-center bg-gradient-to-r from-black to-green-500 w-1/3 gap-4 p-8 bg-green-300 rounded-3xl">
+                    <div className={`flex justify-center`}>
                         <>
-                            <button type="button" onClick={() => setState('play')}
-                                    className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
-                                Play
-                            </button>
-
-                            <label></label>
-                            <select name="difficulty" id="difficulty" onChange={handleDifficulty}>
+                            <select
+                                className="font-mono font-bold bg-green-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+                                onChange={handleDifficulty}
+                            >
+                                <option disabled selected>Difficulty</option>
                                 <option value="easy">Easy</option>
                                 <option value="medium">Medium</option>
                                 <option value="hard">Hard</option>
                             </select>
+
+                            <button type="button" onClick={() => setState('play')}
+                                    className="flex items-center mx-4 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                     className="bi bi-play" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.804 8 5 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                                </svg>
+                                Play
+                            </button>
                         </>
-                        ) : (
-                        <p className="font-bold text-white">{msToReadable(time)}</p>
-                    )}
+                    </div>
                 </div>
-                <div
-                    className={`gap-4 max-w-screen-sm mx-auto grid ${grid_cols} ${state === 'play' ? '' : 'opacity-25'}`}>
-                    {tiles.map((value, index) => (
-                        <Tile
-                            key={index}
-                            value={value}
-                            isFlipped={flipped.includes(index)}
-                            isDone={matched.includes(index)}
-                            onClick={() => handleTileClick(index)}
-                        />
-                    ))}
-                </div>
-            </div>
+            )}
         </div>
     );
 }
