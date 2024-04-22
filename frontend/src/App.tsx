@@ -7,7 +7,9 @@ import Homepage from "./routes/Homepage";
 import Example from "./routes/Example";
 import LeaderBoard from "./routes/Leaderboard";
 import Memory from "./routes/Memory";
+import Instructions from "./routes/Instructions";
 import Login from "./routes/Login";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +31,10 @@ function App() {
         {
           path: "example",
           element: <Example />,
+        },
+        {
+          path: "instructions",
+          element: <Instructions />,
         },
         {
           path: "leaderboard",

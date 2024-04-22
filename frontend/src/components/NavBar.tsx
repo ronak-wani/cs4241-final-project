@@ -14,6 +14,8 @@ function NavBar() {
             <a className=" font-mono font-bold text-2xl text-green-950 hover:text-emerald-300"
                href={"/leaderboard"}>Leaderboard</a>
             <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-300"
+               href={"/instructions"}>Instructions</a>
+            <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-300"
                href={"/memory"}>Memory</a>
             <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-300"
                href={"/example"}>Example</a>
