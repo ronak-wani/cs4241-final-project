@@ -73,9 +73,10 @@ function LeaderBoard() {
     }
 
     return (
-        <div className={"h-full flex flex-col pt-8 items-center justify-center"}>
-            <h1 className={"font-bold text-6xl mb-16"}>Leaderboard</h1>
-            <div className={"flex mb-10 gap-4"}>
+        <div className={"p-5 flex flex-col justify-center items-center align-items-center text-center rounded-full"}>
+            <div>
+            <h1 className={"font-bold text-6xl mb-16 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,1)]\n"}>Leaderboard</h1>
+            <div className={"flex mb-10 gap-4 justify-center items-center align-items-center"}>
                 <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
                                         setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"Memory - Easy"}/>
                 <DifficultySelectButton selected={activeButton} buttonNumber={1} setSelected={setActiveButton}
@@ -101,6 +102,7 @@ function LeaderBoard() {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 }
