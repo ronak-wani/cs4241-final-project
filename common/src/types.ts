@@ -6,5 +6,6 @@ export type employeeFeedback = {
 export type score = {
     username: string;
     score: number;
-    date: Date;
+    createdAt: Date;
+    game: string;
 }
