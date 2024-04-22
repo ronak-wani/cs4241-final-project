@@ -41,14 +41,6 @@ code {
   font-size: 30px;
 }
 
-.instructions{
-  padding: 20px 0 20px 20px;
-  margin: 10px;
-  font-size: 18px;
-  background: #22c55e;
-  border-radius: 10px;
-}
-
 ol li {
   list-style: decimal inside;
 }
