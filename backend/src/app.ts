@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 app.use("/api/example", example);
 app.use("/api/dbScoreRoutes", dbScoreRoutes);
-app.use("/", auth);
+app.use("/api/auth", auth);
 
 app.listen(5000, () => {
     console.log("started");

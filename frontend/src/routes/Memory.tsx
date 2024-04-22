@@ -22,10 +22,8 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
         statusClass = 'bg-green-200 cursor-default';
     }
 
-    statusClass += ' w-32 h-32 flex justify-center items-center text-4xl font-serif transition duration-200'
-
     return (
-        <div className={`w-32 h-32 flex justify-center items-center text-4xl font-serif transition duration-200 ${statusClass}`}
+        <div className={`flex-grow h-32 flex justify-center items-center text-4xl font-serif transition duration-200 ${statusClass}`}
              onClick={onClick}
         >
             {isFlipped ? value : ''}
@@ -41,6 +39,7 @@ function Memory() {
         return shuffledValues.map((value) => String(value));
     }
 
+    const [difficulty, setDifficulty] = useState<string>('easy');
     const [rows, setRows] = useState<number>(3);
     const [cols, setCols] = useState<number>(4);
     const [tiles, setTiles] = useState<string[]>([]);
@@ -74,7 +73,7 @@ function Memory() {
         const data = {
             username: username,
             score: time,
-            game: 'Memory'
+            game: 'memory-' + difficulty,
         }
         const response = await axios.post("/api/dbScoreRoutes", data)
     }
@@ -144,6 +143,24 @@ function Memory() {
         setFlipped([...flipped, tileID]);
     };
 
+    function handleDifficulty(e: React.ChangeEvent<HTMLSelectElement>) {
+        setDifficulty(e.target.value);
+        switch (e.target.value) {
+            case 'easy':
+                setRows(3);
+                setCols(4);
+                break;
+            case 'medium':
+                setRows(4);
+                setCols(5);
+                break;
+            case 'hard':
+                setRows(5);
+                setCols(8);
+                break;
+        }
+    }
+
     function msToReadable(time: number) {
         let minutes = "";
         if (time >= 60000)
@@ -154,31 +171,46 @@ function Memory() {
         return minutes + seconds + ms;
     }
 
+    let grid_cols = '';
+    if (cols === 4) grid_cols = 'grid-cols-4';
+    else if (cols === 5) grid_cols = 'grid-cols-5';
+    else if (cols === 8) grid_cols = 'grid-cols-8';
+
     // renders tile component for each tile in the game
     return (
         <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
-            <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
-            <p className="font-bold text-white">{msToReadable(time)}</p>
-            <div className={`flex justify-center`}>
-                {state === 'idle' || state === 'won' ? (
-                    <button type="button" onClick={() => setState('play')}
-                            className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
-                        Play
-                    </button>
-                ) : ''}
-            </div>
-            <div
-                className={`gap-4 max-w-screen-sm mx-auto grid grid-cols-4 ${state === 'play' ? '' : 'opacity-25'}`}>
-                {tiles.map((value, index) => (
-                    <Tile
-                        key={index}
-                        value={value}
-                        isFlipped={flipped.includes(index)}
-                        isDone={matched.includes(index)}
-                        onClick={() => handleTileClick(index)}
-                    />
-                ))}
-            </div>
+            <div className="bg-gradient-to-r from-black to-green-500 w-2/3 gap-4 p-8 bg-green-300 rounded-full">
+                <div className={`flex justify-center`}>
+                    {state === 'idle' || state === 'won' ? (
+                        <>
+                            <button type="button" onClick={() => setState('play')}
+                                    className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
+                                Play
+                            </button>
+
+                            <label></label>
+                            <select name="difficulty" id="difficulty" onChange={handleDifficulty}>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </>
+                        ) : (
+                        <p className="font-bold text-white">{msToReadable(time)}</p>
+                    )}
+                </div>
+                <div
+                    className={`gap-4 max-w-screen-sm mx-auto grid ${grid_cols} ${state === 'play' ? '' : 'opacity-25'}`}>
+                    {tiles.map((value, index) => (
+                        <Tile
+                            key={index}
+                            value={value}
+                            isFlipped={flipped.includes(index)}
+                            isDone={matched.includes(index)}
+                            onClick={() => handleTileClick(index)}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
