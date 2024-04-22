@@ -9,6 +9,7 @@ import LeaderBoard from "./routes/Leaderboard";
 import Memory from "./routes/Memory";
 import Instructions from "./routes/Instructions";
 import Login from "./routes/Login";
+import LoginCheck from "./components/LoginCheck";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
         },
         {
           path: "example",
-          element: <Example />,
+          element: <LoginCheck  component={<Example />}/>,
         },
         {
           path: "instructions",
@@ -38,11 +39,11 @@ function App() {
         },
         {
           path: "leaderboard",
-          element: <LeaderBoard />,
+          element: <LoginCheck  component={<LeaderBoard />}/>,
         },
         {
           path: "memory",
-          element: <Memory />,
+          element: <LoginCheck  component={<Memory />}/>,
         },
       ],
     },
