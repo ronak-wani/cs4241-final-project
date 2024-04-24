@@ -80,15 +80,17 @@ function LeaderBoard() {
                 <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
                                         setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"Memory - Easy"}/>
                 <DifficultySelectButton selected={activeButton} buttonNumber={1} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("Memory")}} difficulty={"Memory"} />
+                                        setDifficulty={() => {setDifficulty("memory-medium")}} difficulty={"Memory - Medium"} />
+                <DifficultySelectButton selected={activeButton} buttonNumber={2} setSelected={setActiveButton}
+                                        setDifficulty={() => {setDifficulty("memory-hard")}} difficulty={"Memory - Hard"} />
             </div>
             <table>
             <thead>
                     <tr>
                         <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black"}>#</td>
                         <td onClick={updateSortDate} className={"font-bold w-64 bg-green-700 text-center border-2 border-black"}>date</td>
-                        <td onClick={updateSortUsername} className={"font-bold w-32 bg-green-700 text-center border-2 border-black"}>Username</td>
-                        <td onClick={updateSortRank} className={"font-bold w-32 bg-green-700 text-center border-2 border-black"}>Score</td>
+                        <td onClick={updateSortUsername} className={"font-bold w-40 bg-green-700 text-center border-2 border-black"}>Username</td>
+                        <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black"}>Time</td>
                     </tr>
                 </thead>
                 <tbody className="overflow-y-scrolls h-min">
@@ -97,7 +99,7 @@ function LeaderBoard() {
                             <td className={"w-12 bg-emerald-200 text-center border-2 border-black"}>{index+1}</td>
                             <td className={"w-64 bg-emerald-200 text-center border-2 border-black"}>{formatString(score.createdAt.toString())}</td>
                             <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.username}</td>
-                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.score}</td>
+                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.score/1000 + "s"}</td>
                         </tr>
                     ))}
                 </tbody>
