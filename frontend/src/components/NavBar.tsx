@@ -32,6 +32,8 @@ function NavBar() {
                            href={"/memory"}>Memory</a>
                         <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-300"
                            href={"/example"}>Example</a>
+                        <a className="font-mono font-bold text-2xl text-green-950 hover:text-emerald-300"
+                           href={"/multiplayer-memory"}>Multiplayer</a>
                     </div>
             }
         </>

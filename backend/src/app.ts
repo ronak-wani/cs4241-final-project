@@ -7,13 +7,32 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import connectionDB from './routes/dbConnection'
 import dbScoreRoutes from "./routes/dbScoreRoutes";
+import ViteExpress from 'vite-express'
+import { WebSocketServer } from 'ws'
+import http from "http";
 
 const score = require("./scoreModel");
 const app = express();
 
+connectionDB;
+
+const server = http.createServer( app );
+const socketServer = new WebSocketServer({ server });
+const clients: import("ws")[] = [];
+socketServer.on( 'connection', client => {
+    console.log( 'connect!' )
+
+    // when the server receives a message from this client...
+    client.on( 'message', msg => {
+        // send msg to every client EXCEPT the one who originally sent it
+        clients.forEach( c => { if( c !== client ) c.send( msg ) })
+    })
+
+    // add client to client list
+    clients.push( client )
+})
 
 app.use(express.json());
-connectionDB;
 
 //sessions middleware
 app.use(session({
@@ -44,8 +63,9 @@ app.use("/api/example", example);
 app.use("/api/dbScoreRoutes", dbScoreRoutes);
 app.use("/api/auth", auth);
 
-app.listen(5000, () => {
-    console.log("started");
-});
 
+
+server.listen( 5000 );
+
+ViteExpress.bind( app, server);
 export default app;
