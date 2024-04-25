@@ -311,8 +311,9 @@ function MultiplayerMemory() {
                             <select
                                 className="font-mono font-bold bg-green-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                 onChange={handleDifficulty}
+                                defaultValue="difficulty"
                             >
-                                <option disabled selected>Difficulty</option>
+                                <option value="difficulty" disabled>Difficulty</option>
                                 <option value="easy">Easy</option>
                                 <option value="medium">Medium</option>
                                 <option value="hard">Hard</option>
