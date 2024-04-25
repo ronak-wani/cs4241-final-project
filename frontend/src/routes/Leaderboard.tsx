@@ -7,7 +7,7 @@ import DifficultySelectButton from "../components/DifficultySelectButton";
 
 function LeaderBoard() {
     const [scores, setScores] = useState<score[]>([]);
-    const [method, setMethod] = useState("rank");
+    const [method, setMethod] = useState("reverseRank");
     const [difficulty, setDifficulty] = useState("Memory");
     const [activeButton, setActiveButton] = useState(0);
     const [scoresDB, setScoresDB] = useState<score[]>([]);
@@ -26,7 +26,7 @@ function LeaderBoard() {
     useEffect(() => {
         let newScores: score[] = [];
         scoresDB.forEach((data: score) => {
-            console.log(data.game);
+            // console.log(data.game);
             if (data.game === difficulty) {
                 newScores.push(data);
             }
@@ -72,35 +72,48 @@ function LeaderBoard() {
         }
     }
 
+    const getSortIndicator = (column: string): JSX.Element | null => {
+        if (method === `reverse${column.charAt(0).toUpperCase() + column.slice(1)}`) {
+            return <span>&darr;</span>;
+        } else if (method === column) {
+            return <span>&uarr;</span>;
+        }
+        return null;
+    };
+
     return (
-        <div className={"h-full flex flex-col bg-green-50 pt-8 items-center justify-center"}>
-            <h1 className={"font-bold text-6xl mb-16"}>Leaderboard</h1>
-            <div className={"flex mb-10 gap-4"}>
+        <div className={"p-5 flex flex-col justify-center items-center align-items-center text-center rounded-full"}>
+            <div>
+            <h1 className={"font-bold text-6xl mb-16 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,1)]\n"}>Leaderboard</h1>
+            <div className={"flex mb-10 gap-4 justify-center items-center align-items-center"}>
                 <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"memory-easy"} />
+                                        setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"Memory - Easy"}/>
                 <DifficultySelectButton selected={activeButton} buttonNumber={1} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("Memory")}} difficulty={"Memory"} />
+                                        setDifficulty={() => {setDifficulty("memory-medium")}} difficulty={"Memory - Medium"} />
+                <DifficultySelectButton selected={activeButton} buttonNumber={2} setSelected={setActiveButton}
+                                        setDifficulty={() => {setDifficulty("memory-hard")}} difficulty={"Memory - Hard"} />
             </div>
             <table>
             <thead>
                     <tr>
-                        <td className={"font-bold w-12 text-center border-2"}>#</td>
-                        <td onClick={updateSortDate} className={"font-bold w-64 text-center border-2"}>date</td>
-                        <td onClick={updateSortUsername} className={"font-bold w-32 text-center border-2"}>Username</td>
-                        <td onClick={updateSortRank} className={"font-bold w-32 text-center border-2"}>Score</td>
+                        <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black text-3xl"}>#</td>
+                        <td onClick={updateSortDate} className={"font-bold w-64 bg-green-700 text-center border-2 border-black text-3xl"}>Date {getSortIndicator('date')}</td>
+                        <td onClick={updateSortUsername} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Username {getSortIndicator('username')}</td>
+                        <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Time {getSortIndicator('rank')}</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="overflow-y-scrolls h-min">
                     {scores.map((score: score, index: number) => (
                         <tr>
-                            <td className={"w-12 text-center border-2"}>{index+1}</td>
-                            <td className={"w-64 text-center border-2"}>{formatString(score.createdAt.toString())}</td>
-                            <td className={"w-32 text-center border-2"}>{score.username}</td>
-                            <td className={"w-32 text-center border-2"}>{score.score}</td>
+                            <td className={"w-12 bg-emerald-200 text-center border-2 border-black"}>{index+1}</td>
+                            <td className={"w-64 bg-emerald-200 text-center border-2 border-black"}>{formatString(score.createdAt.toString())}</td>
+                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.username}</td>
+                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.score/1000 + "s"}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 }
