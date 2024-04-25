@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../css/Memory.css';
 import axios from 'axios';
 
+const ws = new WebSocket( 'ws://localhost:5000' );
 // when interacting with the tile object, these are the props that it accepts
 interface tileProps {
     value: string;
@@ -44,20 +45,14 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
 
 // function for the game itself
 function MultiplayerMemory() {
-    const ws = new WebSocket( 'ws://localhost:5000' );
-    ws.onopen = () => {
-        ws.send( 'a new client has connected.' )
 
-        ws.onmessage = async msg => {
-            // add message to end of msgs array,
-            // re-assign to trigger UI update
-            const message = await msg.data;
-            console.log(message);
-        }
-    }
+
+
+
     function createTiles(rows: number, cols: number) {
         const values = Array.from({ length: rows * cols / 2 }, (_, index) => index);
         const shuffledValues = [...values, ...values].sort(() => Math.random() - 0.5);
+        ws.send(shuffledValues.map((value) => String(value)).toString())
         return shuffledValues.map((value) => String(value));
     }
 
@@ -113,14 +108,7 @@ function MultiplayerMemory() {
     }, [startTime])
 
     useEffect(() => {
-        if (state === 'play') {
-            setTiles(createTiles(rows, cols));
-            setFlipped([]);
-            setMatched([]);
-
-            setStartTime((new Date()).getTime());
-        }
-        else if (state === 'won') {
+        if (state === 'won') {
             clearInterval(intervalID);
             alert("You won! Time: " + msToReadable(time));
             setState('idle');
@@ -129,18 +117,31 @@ function MultiplayerMemory() {
         }
     }, [state])
 
+    function StartGame() {
+        setState('play');
+        setTiles(createTiles(rows, cols));
+        setFlipped([]);
+        setMatched([]);
+        setStartTime((new Date()).getTime());
+    }
+
     // function that handles the tile flipping and matching logic
-    const handleTileClick = (tileID: number) => {
+    const handleTileFlip= (tileID: number) => {
+        console.log(state)
         if (state !== 'play') return;
 
         // don't flip if:
         // if two tiles are already flipped
         // or the clicked tile is already flipped
         // or the clicked tile is already matched
+        console.log(tileID)
+        console.log(flipped.length)
+        console.log(flipped.includes(tileID))
+        console.log(matched.includes(tileID))
         if (flipped.length >= 2 || flipped.includes(tileID) || matched.includes(tileID)) {
             return;
         }
-
+        console.log("here")
         if (flipped.length === 1) {
             // if two tiles have just been flipped
 
@@ -199,6 +200,95 @@ function MultiplayerMemory() {
     else if (cols === 5) grid_cols = 'grid-cols-5';
     else if (cols === 8) grid_cols = 'grid-cols-8';
 
+    function handleTileClick(index: number) {
+        handleTileFlip(index);
+        ws.send(index+"");
+    }
+
+    ws.onopen = () => {
+        ws.send( 'a new client has connected.' )
+        console.log("Connected")
+        ws.onmessage = async msg => {
+            // add message to end of msgs array,
+            // re-assign to trigger UI update
+            const message = await msg.data.text();
+            console.log(message);
+            if (message.includes(",")) {
+                const cards = message.split(",");
+                setState('play');
+                console.log("here!!!")
+                console.log(cards.length)
+                if (cards.length === 12) {
+                    setRows(3);
+                    setCols(4);
+                    setDifficulty('easy');
+                } else if (cards.length === 20) {
+                    setRows(4);
+                    setCols(5);
+                    setDifficulty('medium');
+                } else {
+                    setRows(5);
+                    setCols(8);
+                    setDifficulty('hard');
+                }
+
+                setTiles(cards);
+                setFlipped([]);
+                setMatched([]);
+
+                setStartTime((new Date()).getTime());
+            }
+
+        }
+    }
+
+    useEffect(() => {
+        if (state === 'idle') {
+            ws.onmessage = async msg => {
+                // add message to end of msgs array,
+                // re-assign to trigger UI update
+                const message = await msg.data.text();
+                console.log(message);
+                if (message.includes(",")) {
+                    const cards = message.split(",");
+                    setState('play');
+                    console.log("here!!!")
+                    console.log(cards.length)
+                    if (cards.length === 12) {
+                        setRows(3);
+                        setCols(4);
+                        setDifficulty('easy');
+                    } else if (cards.length === 20) {
+                        setRows(4);
+                        setCols(5);
+                        setDifficulty('medium');
+                    } else {
+                        setRows(5);
+                        setCols(8);
+                        setDifficulty('hard');
+                    }
+
+                    setTiles(cards);
+                    setFlipped([]);
+                    setMatched([]);
+
+                    setStartTime((new Date()).getTime());
+                }
+
+            }
+        } else {
+            ws.onmessage = async msg => {
+                // add message to end of msgs array,
+                // re-assign to trigger UI update
+                const message = await msg.data.text();
+                console.log(message);
+                if (!isNaN(parseInt(message))) {
+                    handleTileFlip(parseInt(message));
+                }
+            }
+        }
+    }, [state, flipped, matched]);
+
     return (
         <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
             {state === 'play' ? (
@@ -231,7 +321,7 @@ function MultiplayerMemory() {
                                 <option value="hard">Hard</option>
                             </select>
 
-                            <button type="button" onClick={() => setState('play')}
+                            <button type="button" onClick={StartGame}
                                     className="flex items-center mx-4 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                                      className="bi bi-play" viewBox="0 0 16 16">
