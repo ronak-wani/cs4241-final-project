@@ -4,7 +4,6 @@ import {Outlet, RouterProvider} from "react-router";
 import NavBar from "./components/NavBar";
 import {createBrowserRouter} from "react-router-dom";
 import Homepage from "./routes/Homepage";
-import Example from "./routes/Example";
 import LeaderBoard from "./routes/Leaderboard";
 import Memory from "./routes/Memory";
 import Instructions from "./routes/Instructions";
@@ -29,10 +28,6 @@ function App() {
         {
           path: "",
           element: <Homepage />,
-        },
-        {
-          path: "example",
-          element: <LoginCheck  component={<Example />}/>,
         },
         {
           path: "instructions",
