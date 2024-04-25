@@ -13,7 +13,7 @@ const CLIENT_SECRET = "a8718689d2ebfedf377ccc7f86776540f0a778a2";
 
 router.get("/getAccessToken", async (req, res) => {
     req.query.code;
-    console.log("inside getAccessToken");
+
     const params = "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&code=" + req.query.code;
     await fetch("https://github.com/login/oauth/access_token"+params, {
         method: "POST",
@@ -29,28 +29,7 @@ router.get("/getAccessToken", async (req, res) => {
     })
 })
 
-//getting user data
-//access token passed in the header
-// router.get("/getUserData", async (req, res) => {
-//     const authorization = req.get("Authorization"); //Bearer AccessToken
-//     console.log(authorization)
-//     if(authorization){
-//         await fetch("https://api.github.com/user", {
-//             method: "GET",
-//             headers: {
-//                 "Authorization": authorization
-//             }
-//         }).then((data) => {
-//             console.log("get user data: ")
-//             console.log(data);
-//             res.json(data);
-//         })
-//     }
-//     else{
-//         res.status(401).send("Not authorized");
-//     }
-//
-// })
+
 router.get("/getUserData", async (req, res) => {
     const authorization = req.get("Authorization"); //Bearer AccessToken
     console.log(authorization);
@@ -65,7 +44,7 @@ router.get("/getUserData", async (req, res) => {
             });
 
             if (!response.ok) {
-                // Handle non-2xx status codes (e.g., 404 not found)
+
                 return res.status(response.status).send("Error fetching user data");
             }
 
@@ -82,13 +61,5 @@ router.get("/getUserData", async (req, res) => {
 });
 
 
-// router.get('/github', passport.authenticate('github', {scope: ['profile']}))
-//
-// router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
-//     function(req, res) {
-//         // Successful authentication, redirect home.
-//         res.redirect('/')
-//     }
-// )
 
 export default router;

@@ -14,7 +14,7 @@ function DifficultySelectButton(props: Prop) {
     }
 
     return (
-        <button className={props.selected === props.buttonNumber?"bg-blue-950 text-white w-32 h-8 rounded-2xl": "bg-blue-300 text-black w-32 h-8 rounded-2xl"}
+        <button className={props.selected === props.buttonNumber?"border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded": "bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded w-48"}
                 onClick={handleClick}>{props.difficulty}
         </button>
     );

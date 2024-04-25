@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../components/NavBar";
-import Button from 'react-bootstrap/Button';
 import axios from "axios";
+import Leaderboard from "./Leaderboard";
+import leaderboard from "./Leaderboard";
 
 const CLIENT_ID = "f0bb48553c39a2d19844";
 
@@ -29,7 +30,7 @@ function Login() {
 
         if (codeParams && localStorage.getItem("accessToken") === null) {
             const getAccessToken = async () => {
-                console.log("inside access Token");
+                // console.log("inside access Token");
                 try {
                     const response = await axios.get("api/auth/getAccessToken?code=" + codeParams, {
                         headers: {
@@ -38,9 +39,9 @@ function Login() {
                         }
                     });
 
-                    console.log(response);
+                    // console.log(response);
                     const data = await response.data;
-                    console.log(data);
+                    // console.log(data);
                     if (data.access_token) {
                         localStorage.setItem("accessToken", data.access_token);
                         setRerender(!rerender);
@@ -79,35 +80,42 @@ function Login() {
     return (
         <>
             <NavBar />
-        <div className="flex flex-col justify-center items-center align-items-center text-center login-entry login-page">
-        <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
+        <main className="overflow-y-scroll h-screen flex flex-col justify-center items-center align-items-center text-center">
+        <div role="region" aria-label="Login section" className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
                 <h1 className="font-bold text-white">Login Success</h1>
-            <h2 className="font-bold text-white">Welcome</h2>
         {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
             {localStorage.getItem("accessToken") ?
                 <>
 
-                        <button className="bg-green-950 hover:bg-emerald-300 text-white font-bold py-2 px-4 rounded-full"
-                                style={{width: "30%"}} onClick={() => {
-                            localStorage.removeItem("accessToken");
-                            setRerender(!rerender);
-                            window.location.href = "/";
-                        }}>Logout
-                        </button>
-                        <button className="bg-green-950 hover:bg-emerald-300 text-white font-bold py-2 px-4 rounded-full"
-                                style={{width: "30%"}} onClick={() => window.location.href = "/memory"}>Go Play</button>
+                    <button
+                        className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
+                        style={{width: "30%"}} onClick={() => window.location.href = "/instructions"}>How To Play
+                    </button>
+                    <button
+                        className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
+                        style={{width: "30%"}} onClick={() => window.location.href = "/memory"}>Go Play
+                    </button>
 
-                        <h2 className="font-bold text-white">User Data: </h2>
-                        {/*<button onClick={getUserData}>Get Data</button>*/}
+                    <button
+                        className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
+                        style={{width: "30%"}} onClick={() => {
+                        localStorage.removeItem("accessToken");
+                        setRerender(!rerender);
+                        window.location.href = "/";
+                    }}>Logout
+                    </button>
 
-                        {Object.keys(userData).length !== 0 ?
-                            <>
-                                <div className="font-bold text-white">GitHub Username: {userData.login}</div>
-                            </>
-                            :
-                            <>
-                            </>
-                        }
+                    {Object.keys(userData).length !== 0 ?
+                        <>
+                            <div className="font-bold text-white">Welcome, {userData.login}</div>
+                        </>
+                        :
+                        <>
+                        </>
+                    }
+                    <h2 className="font-bold text-white">High Score: {} </h2>
+                    {/*<button onClick={getUserData}>Get Data</button>*/}
+
 
                 </>
                 :
@@ -116,7 +124,7 @@ function Login() {
                 </>
             }
             </div>
-            </div>
+            </main>
         </>
     );
 }
