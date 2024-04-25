@@ -7,7 +7,7 @@ import DifficultySelectButton from "../components/DifficultySelectButton";
 
 function LeaderBoard() {
     const [scores, setScores] = useState<score[]>([]);
-    const [method, setMethod] = useState("rank");
+    const [method, setMethod] = useState("reverseRank");
     const [difficulty, setDifficulty] = useState("Memory");
     const [activeButton, setActiveButton] = useState(0);
     const [scoresDB, setScoresDB] = useState<score[]>([]);
@@ -72,6 +72,15 @@ function LeaderBoard() {
         }
     }
 
+    const getSortIndicator = (column: string): JSX.Element | null => {
+        if (method === `reverse${column.charAt(0).toUpperCase() + column.slice(1)}`) {
+            return <span>&darr;</span>;
+        } else if (method === column) {
+            return <span>&uarr;</span>;
+        }
+        return null;
+    };
+
     return (
         <div className={"p-5 flex flex-col justify-center items-center align-items-center text-center rounded-full"}>
             <div>
@@ -87,10 +96,10 @@ function LeaderBoard() {
             <table>
             <thead>
                     <tr>
-                        <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black"}>#</td>
-                        <td onClick={updateSortDate} className={"font-bold w-64 bg-green-700 text-center border-2 border-black"}>date</td>
-                        <td onClick={updateSortUsername} className={"font-bold w-40 bg-green-700 text-center border-2 border-black"}>Username</td>
-                        <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black"}>Time</td>
+                        <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black text-3xl"}>#</td>
+                        <td onClick={updateSortDate} className={"font-bold w-64 bg-green-700 text-center border-2 border-black text-3xl"}>Date {getSortIndicator('date')}</td>
+                        <td onClick={updateSortUsername} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Username {getSortIndicator('username')}</td>
+                        <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Time {getSortIndicator('rank')}</td>
                     </tr>
                 </thead>
                 <tbody className="overflow-y-scrolls h-min">

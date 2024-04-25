@@ -35,9 +35,9 @@ function Instructions() {
                 <h3 className="text-xl underline">Difficulty Levels</h3>
                 <h6>There are 3 different difficulty levels, each level has a different size of board</h6>
                 <ol>
-                    <li>Memory-Easy - Board dimension = [TBD]</li>
-                    <li>Memory-Medium - Board dimension = [TBD]</li>
-                    <li>Memory-Hard - Board dimension = [TBD]</li>
+                    <li>Memory-Easy - Board dimension = 4 x 3</li>
+                    <li>Memory-Medium - Board dimension = 5 x 4</li>
+                    <li>Memory-Hard - Board dimension = 8 x 5</li>
                 </ol>
                 <hr/>
                 <h2 className="text-xl underline">Scoring The Game</h2>
