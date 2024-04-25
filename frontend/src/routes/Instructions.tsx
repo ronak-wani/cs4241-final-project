@@ -5,8 +5,9 @@ import img2 from './img2.png';
 function Instructions() {
 
     return (
-        <div className="p-5 overflow-y-auto flex flex-col justify-center items-center align-items-center text-center rounded-full">
+        <main className="p-5 overflow-y-auto flex flex-col justify-center items-center align-items-center text-center rounded-full">
             <div
+                role="region" aria-label="Instructions"
                 className="overflow-y-auto text-white h-400 w-10/12 font-bold h-400px bg-gradient-to-r from-black to-green-500 p-8 bg-green-300">
                 <h1 className="text-4xl">Instructions</h1>
                 <hr/>
@@ -31,7 +32,7 @@ function Instructions() {
                     <li>After the game is completed, an alert is thrown with the time taken to complete</li>
                     <li>BE SURE TO REMEMBER WHAT'S IN THE TILES!!!</li>
                 </ol>
-                <img className="images" src={img1}/> <img className="images" src={img2}/>
+                <img className="images" src={img1} alt="Non-matching tiles"/> <img className="images" src={img2}  alt="Matched tiles"/>
                 <h3 className="text-xl underline">Difficulty Levels</h3>
                 <h6>There are 3 different difficulty levels, each level has a different size of board</h6>
                 <ol>
@@ -48,7 +49,7 @@ function Instructions() {
                     </li>
                 </ul>
             </div>
-        </div>
+        </main>
     );
 }
 
