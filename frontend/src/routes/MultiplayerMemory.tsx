@@ -284,7 +284,7 @@ function MultiplayerMemory() {
                 }
             }
         }
-    }, [state, flipped, matched, turnl]);
+    }, [state, flipped, matched, turn]);
 
     return (
         <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
