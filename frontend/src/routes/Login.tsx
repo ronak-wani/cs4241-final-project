@@ -29,7 +29,7 @@ function Login() {
 
         if (codeParams && localStorage.getItem("accessToken") === null) {
             const getAccessToken = async () => {
-                console.log("inside access Token");
+                // console.log("inside access Token");
                 try {
                     const response = await axios.get("api/auth/getAccessToken?code=" + codeParams, {
                         headers: {
@@ -38,9 +38,9 @@ function Login() {
                         }
                     });
 
-                    console.log(response);
+                    // console.log(response);
                     const data = await response.data;
-                    console.log(data);
+                    // console.log(data);
                     if (data.access_token) {
                         localStorage.setItem("accessToken", data.access_token);
                         setRerender(!rerender);
@@ -79,8 +79,8 @@ function Login() {
     return (
         <>
             <NavBar />
-        <div className="flex flex-col justify-center items-center align-items-center text-center login-entry login-page">
-        <div className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
+        <main className="flex flex-col justify-center items-center align-items-center text-center login-entry login-page">
+        <div role="region" aria-label="Login section" className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
                 <h1 className="font-bold text-white">Login Success</h1>
             <h2 className="font-bold text-white">Welcome</h2>
         {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
@@ -116,7 +116,7 @@ function Login() {
                 </>
             }
             </div>
-            </div>
+            </main>
         </>
     );
 }

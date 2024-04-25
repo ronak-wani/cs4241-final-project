@@ -36,6 +36,8 @@ function Tile({ value, onClick, isFlipped, isDone }: tileProps) {
     return (
         <div className={`flex-grow self-stretch flex justify-center items-center text-4xl font-serif transition duration-200 ${statusClass}`}
              onClick={onClick}
+             role="button"
+             aria-label={`Tile ${value}`}
         >
             {content}
         </div>
@@ -190,9 +192,9 @@ function Memory() {
     else if (cols === 8) grid_cols = 'grid-cols-8';
 
     return (
-        <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
+        <main className="h-screen flex flex-col justify-center items-center align-items-center text-center">
             {state === 'play' ? (
-                <div className="bg-gradient-to-r from-black to-green-500 w-2/3 h-5/6 gap-4 p-8 bg-green-300 rounded-3xl">
+                <div role="region" aria-label="Memory game" className="bg-gradient-to-r from-black to-green-500 w-2/3 h-5/6 gap-4 p-8 bg-green-300 rounded-3xl">
                     <p className="font-bold text-white text-5xl mb-4">{msToReadable(time)}</p>
                     <div
                         className={`gap-4 max-w-screen-sm h-5/6 mx-auto grid ${grid_cols} opacity-25'}`}>
@@ -208,14 +210,15 @@ function Memory() {
                     </div>
                 </div>
                 ) : (
-                <div className="flex justify-center items-center bg-gradient-to-r from-black to-green-500 w-1/3 gap-4 p-8 bg-green-300 rounded-3xl">
+                <div role="region" aria-label="Memory game setup" className="flex justify-center items-center bg-gradient-to-r from-black to-green-500 w-1/3 gap-4 p-8 bg-green-300 rounded-3xl">
                     <div className={`flex justify-center`}>
                         <>
                             <select
                                 className="font-mono font-bold bg-green-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                 onChange={handleDifficulty}
+                                defaultValue="difficulty"
                             >
-                                <option disabled selected>Difficulty</option>
+                                <option value="difficulty" disabled>Difficulty</option>
                                 <option value="easy">Easy</option>
                                 <option value="medium">Medium</option>
                                 <option value="hard">Hard</option>
@@ -234,7 +237,7 @@ function Memory() {
                     </div>
                 </div>
             )}
-        </div>
+        </main>
     );
 }
 
