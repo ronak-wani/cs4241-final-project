@@ -43,5 +43,5 @@ Users log in with GitHub and link their scores to their account. A leaderboard t
 - We used ARIA labels to benefit the screen readers.
 - Used a proper color scheme to make web application look elegant.
 - Set the font sizes according to the purpose like the headings have a greater font-size for better visibility.
-- Have a 100% Google Lighthouse score.
+- Have a 90+% Google Lighthouse accessibility score.
 
