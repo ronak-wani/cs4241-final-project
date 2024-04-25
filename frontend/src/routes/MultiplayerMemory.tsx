@@ -95,7 +95,7 @@ function MultiplayerMemory() {
             if (score > 0) {
                 alert("Congratulations, you won! You now have bragging rights.");
             } else if (score < 0) {
-                alert("Unfortunately, you lost. Better look next time.");
+                alert("Unfortunately, you lost. Better luck next time.");
             } else {
                 alert("You tied. Lets count this as a win.");
             }
@@ -284,7 +284,7 @@ function MultiplayerMemory() {
                 }
             }
         }
-    }, [state, flipped, matched, turn]);
+    }, [state, flipped, matched, turnl]);
 
     return (
         <div className="h-screen flex flex-col justify-center items-center align-items-center text-center">
