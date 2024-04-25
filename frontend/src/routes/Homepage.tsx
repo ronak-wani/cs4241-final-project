@@ -10,7 +10,7 @@ function Homepage() {
 
     return (
         <>
-            <main className="login-entry">
+            <main className="login-entry bg-gradient-to-r from-black to-green-500">
                 <div>
                     <h1 className={"font-bold "}>Welcome to the Matching Game!</h1>
                     <p>This is the homepage for our matching game.</p>
