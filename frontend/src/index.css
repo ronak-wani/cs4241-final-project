@@ -22,8 +22,6 @@ code {
 
 .login-entry{
   text-align: center;
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(10, 101, 16) 38%, rgb(10, 204, 25) 100%);
   border: none;
   border-radius: 20px;
   padding: 100px;
