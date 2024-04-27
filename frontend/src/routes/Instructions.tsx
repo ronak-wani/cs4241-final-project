@@ -32,7 +32,8 @@ function Instructions() {
                     <li>After the game is completed, an alert is thrown with the time taken to complete</li>
                     <li>BE SURE TO REMEMBER WHAT'S IN THE TILES!!!</li>
                 </ol>
-                <img className="images" src={img1} alt="Non-matching tiles"/> <img className="images" src={img2}  alt="Matched tiles"/>
+                <img className="images" src={img1} alt="Non-matching tiles"/> <img className="images" src={img2}
+                                                                                   alt="Matched tiles"/>
                 <h3 className="text-xl underline">Difficulty Levels</h3>
                 <h6>There are 3 different difficulty levels, each level has a different size of board</h6>
                 <ol>
@@ -48,6 +49,15 @@ function Instructions() {
                         level
                     </li>
                 </ul>
+                <h2 className="text-xl underline">Multiplayer</h2>
+                <ol>
+                    <li>Two players can play together</li>
+                    <li>The second person plays first by opening a pair of tiles</li>
+                    <li>If matched the player gets a point and both the players can see the tiles greyed out, else the tiles close back</li>
+                    <li>The first person plays next</li>
+                    <li>Both players keep playing until game finishes</li>
+                    <li>The player with highest points wins</li>
+                </ol>
             </div>
         </main>
     );
