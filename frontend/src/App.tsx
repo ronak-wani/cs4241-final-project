@@ -16,15 +16,15 @@ function App() {
   const router = createBrowserRouter([
 
     {
-      path: "login",
-      errorElement: <h2>Something went wrong!</h2>,
-      element: <Login />,
-    },
-    {
       path: "/",
       errorElement: <h2>Something went wrong!</h2>,
       element: <Root />,
       children: [
+        {
+          path: "login",
+          errorElement: <h2>Something went wrong!</h2>,
+          element: <Login />,
+        },
         {
           path: "",
           element: <Homepage />,

@@ -129,7 +129,7 @@ function LeaderBoard() {
                                                 setDifficulty("memory-hard")
                                             }} difficulty={"Memory - Hard"}/>
                 </div>
-                <div className={"max-h-full overflow-scroll"}>
+                <div className={"max-h-full overflow-y-scroll"}>
                     <table>
                         <thead>
                         <tr>

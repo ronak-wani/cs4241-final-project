@@ -79,8 +79,7 @@ function Login() {
 
     return (
         <>
-            <NavBar />
-        <main className="overflow-y-scroll h-screen flex flex-col justify-center items-center align-items-center text-center">
+        <main className="h-screen flex flex-col justify-center items-center align-items-center text-center">
         <div role="region" aria-label="Login section" className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
                 <h1 className="font-bold text-white">Login Success</h1>
         {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
@@ -113,9 +112,6 @@ function Login() {
                         <>
                         </>
                     }
-                    <h2 className="font-bold text-white">High Score: {} </h2>
-                    {/*<button onClick={getUserData}>Get Data</button>*/}
-
 
                 </>
                 :
