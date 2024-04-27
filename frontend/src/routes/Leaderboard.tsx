@@ -11,11 +11,29 @@ function LeaderBoard() {
     const [difficulty, setDifficulty] = useState("Memory");
     const [activeButton, setActiveButton] = useState(0);
     const [scoresDB, setScoresDB] = useState<score[]>([]);
+    const [userScores, setUserScores] = useState<score[]>([]);
+    const [username, setUsername] = useState<string>('');
+
     function formatString(s: string): string {
         let f = "";
         f = f + s.substring(0, 10) + " " + s.substring(11, 19);
         return f;
     }
+
+    useEffect(() => {
+        const getUserData = async () => {
+            const response = await fetch("/api/auth/getUserData", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                },
+            });
+            const data = await response.json();
+            console.log(data);
+            setUsername(data.login);
+        };
+        getUserData();
+    }, []);
 
     useEffect(() => {
         axios.get("/api/dbScoreRoutes").then((res) => {
@@ -72,6 +90,17 @@ function LeaderBoard() {
         }
     }
 
+    function displayUserSpecific(){
+        let newScores: score[] = [];
+        scoresDB.forEach((data: score) => {
+            // console.log(data.game);
+            if (data.username === username) {
+                newScores.push(data);
+            }
+        });
+        setScores(newScores);
+    }
+
     const getSortIndicator = (column: string): JSX.Element | null => {
         if (method === `reverse${column.charAt(0).toUpperCase() + column.slice(1)}`) {
             return <span>&darr;</span>;
@@ -85,19 +114,30 @@ function LeaderBoard() {
         <div className={"p-5 flex flex-col justify-center items-center align-items-center text-center rounded-full"}>
             <div>
             <h1 className={"font-bold text-6xl mb-16 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,1)]\n"}>Leaderboard</h1>
-            <div className={"flex mb-10 gap-4 justify-center items-center align-items-center"}>
-                <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("memory-easy")}} difficulty={"Memory - Easy"}/>
-                <DifficultySelectButton selected={activeButton} buttonNumber={1} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("memory-medium")}} difficulty={"Memory - Medium"} />
-                <DifficultySelectButton selected={activeButton} buttonNumber={2} setSelected={setActiveButton}
-                                        setDifficulty={() => {setDifficulty("memory-hard")}} difficulty={"Memory - Hard"} />
-            </div>
-            <table>
-            <thead>
+                <div className={"flex mb-10 gap-4 justify-center items-center align-items-center"}>
+                    <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
+                                            setDifficulty={() => {
+                                                setDifficulty("memory-easy")
+                                            }} difficulty={"Memory - Easy"}/>
+                    <DifficultySelectButton selected={activeButton} buttonNumber={1} setSelected={setActiveButton}
+                                            setDifficulty={() => {
+                                                setDifficulty("memory-medium")
+                                            }} difficulty={"Memory - Medium"}/>
+                    <DifficultySelectButton selected={activeButton} buttonNumber={2} setSelected={setActiveButton}
+                                            setDifficulty={() => {
+                                                setDifficulty("memory-hard")
+                                            }} difficulty={"Memory - Hard"}/>
+                    <button
+                        className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded w-48"
+                        onClick={displayUserSpecific}> Show My Score
+                    </button>
+                </div>
+                <table>
+                    <thead>
                     <tr>
                         <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black text-3xl"}>#</td>
-                        <td onClick={updateSortDate} className={"font-bold w-64 bg-green-700 text-center border-2 border-black text-3xl"}>Date {getSortIndicator('date')}</td>
+                        <td onClick={updateSortDate}
+                            className={"font-bold w-64 bg-green-700 text-center border-2 border-black text-3xl"}>Date {getSortIndicator('date')}</td>
                         <td onClick={updateSortUsername} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Username {getSortIndicator('username')}</td>
                         <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Time {getSortIndicator('rank')}</td>
                     </tr>
