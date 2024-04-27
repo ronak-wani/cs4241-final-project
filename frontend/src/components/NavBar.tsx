@@ -21,9 +21,9 @@ function NavBar() {
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
                            href={"/instructions"} title="Go to instructions page">Instructions</a>
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
-                           href={"/memory"} title="Go to game page">Memory</a>
+                           href={"/memory"} title="Go to the singleplayer memory game">Singleplayer</a>
                         <a className="font-mono font-bold text-2xl text-white hover:text-emerald-300"
-                           href={"/multiplayer-memory"}>Multiplayer</a>
+                           href={"/multiplayer-memory"} title="Go to the muultiplayer memory game">Multiplayer</a>
                     </div>
                 )
             }

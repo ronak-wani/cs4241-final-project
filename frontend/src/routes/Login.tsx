@@ -81,50 +81,50 @@ function Login() {
         <>
             <NavBar />
         <main className="overflow-y-scroll h-screen flex flex-col justify-center items-center align-items-center text-center">
-        <div role="region" aria-label="Login section" className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
-                <h1 className="font-bold text-white">Login Success</h1>
-        {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
-            {localStorage.getItem("accessToken") ?
-                <>
+            <div role="region" aria-label="Login section"
+                 className="bg-gradient-to-r from-black to-green-500 w-2/3 p-8 bg-green-300 rounded-full">
+                <h1 className={"font-bold text-white text-4xl mb-2"}>Memory Game</h1>
+                {/*<Button variant="primary" style={{textAlign: "center"}} onClick={loginWithGithub}>Login With GitHub</Button>*/}
+                {localStorage.getItem("accessToken") ?
+                    <>
+                        {Object.keys(userData).length !== 0 ?
+                            <>
+                                <div className="text-white">Welcome, {userData.login}</div>
+                            </>
+                            :
+                            <>
+                            </>
+                        }
 
-                    <button
-                        className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
-                        style={{width: "30%"}} onClick={() => window.location.href = "/instructions"}>How To Play
-                    </button>
-                    <button
-                        className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
-                        style={{width: "30%"}} onClick={() => window.location.href = "/memory"}>Go Play
-                    </button>
+                        <button
+                            className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
+                            style={{width: "30%"}} onClick={() => window.location.href = "/instructions"}>How To Play
+                        </button>
+                        <button
+                            className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
+                            style={{width: "30%"}} onClick={() => window.location.href = "/memory"}>Go Play
+                        </button>
 
-                    <button
-                        className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
-                        style={{width: "30%"}} onClick={() => {
-                        localStorage.removeItem("accessToken");
-                        setRerender(!rerender);
-                        window.location.href = "/";
-                    }}>Logout
-                    </button>
+                        <button
+                            className="border-4 w-48 bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-300 hover:border-blue-500 rounded m-6"
+                            style={{width: "30%"}} onClick={() => {
+                            localStorage.removeItem("accessToken");
+                            setRerender(!rerender);
+                            window.location.href = "/";
+                        }}>Logout
+                        </button>
 
-                    {Object.keys(userData).length !== 0 ?
-                        <>
-                            <div className="font-bold text-white">Welcome, {userData.login}</div>
-                        </>
-                        :
-                        <>
-                        </>
-                    }
-                    <h2 className="font-bold text-white">High Score: {} </h2>
-                    {/*<button onClick={getUserData}>Get Data</button>*/}
+                        {/*<button onClick={getUserData}>Get Data</button>*/}
 
 
-                </>
-                :
-                <>
-                    <h3 className="font-bold text-white">User is not logged in</h3>
-                </>
-            }
+                    </>
+                    :
+                    <>
+                        <h3 className="font-bold text-white">User is not logged in</h3>
+                    </>
+                }
             </div>
-            </main>
+        </main>
         </>
     );
 }
