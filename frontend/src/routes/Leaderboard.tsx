@@ -129,7 +129,7 @@ function LeaderBoard() {
                                             }} difficulty={"Memory - Hard"}/>
                     <button
                         className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded w-48"
-                        onClick={displayUserSpecific}> Show My Score
+                        onClick={displayUserSpecific}> Show My Scores
                     </button>
                 </div>
                 <table>
