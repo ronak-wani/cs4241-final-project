@@ -104,6 +104,8 @@ function Login() {
                     }}>Logout
                     </button>
 
+                        {/*<button onClick={getUserData}>Get Data</button>*/}
+
                     {Object.keys(userData).length !== 0 ?
                         <>
                             <div className="font-bold text-white">Welcome, {userData.login}</div>
@@ -113,14 +115,14 @@ function Login() {
                         </>
                     }
 
-                </>
-                :
-                <>
-                    <h3 className="font-bold text-white">User is not logged in</h3>
-                </>
-            }
+                    </>
+                    :
+                    <>
+                        <h3 className="font-bold text-white">User is not logged in</h3>
+                    </>
+                }
             </div>
-            </main>
+        </main>
         </>
     );
 }

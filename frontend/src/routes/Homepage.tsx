@@ -12,9 +12,8 @@ function Homepage() {
         <>
             <main className="login-entry bg-gradient-to-r from-black to-green-500">
                 <div>
-                    <h1 className={"font-bold "}>Welcome to the Matching Game!</h1>
-                    <p>This is the homepage for our matching game.</p>
-                    <p>Get ready to match some cards!</p>
+                    <h1 className={"font-bold text-4xl mb-2"}>Welcome to the Memory Game!</h1>
+                    <p>Get ready to match some cards and improve your memory!</p>
                 </div>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
