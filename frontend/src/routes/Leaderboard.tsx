@@ -3,12 +3,13 @@ import sort from "../sort";
 import axios from "axios";
 import {score} from "common/src/types";
 import DifficultySelectButton from "../components/DifficultySelectButton";
+import {msToReadable} from "./Memory";
 
 
 function LeaderBoard() {
     const [scores, setScores] = useState<score[]>([]);
     const [method, setMethod] = useState("reverseRank");
-    const [difficulty, setDifficulty] = useState("Memory");
+    const [difficulty, setDifficulty] = useState("memory-easy");
     const [activeButton, setActiveButton] = useState(0);
     const [scoresDB, setScoresDB] = useState<score[]>([]);
     const [userScores, setUserScores] = useState<score[]>([]);
@@ -112,7 +113,7 @@ function LeaderBoard() {
 
     return (
         <div className={"p-5 flex flex-col justify-center items-center align-items-center text-center rounded-full"}>
-            <div>
+            <div className={"max-h-[50vh]"}>
             <h1 className={"font-bold text-6xl mb-16 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,1)]\n"}>Leaderboard</h1>
                 <div className={"flex mb-10 gap-4 justify-center items-center align-items-center"}>
                     <DifficultySelectButton selected={activeButton} buttonNumber={0} setSelected={setActiveButton}
@@ -127,32 +128,30 @@ function LeaderBoard() {
                                             setDifficulty={() => {
                                                 setDifficulty("memory-hard")
                                             }} difficulty={"Memory - Hard"}/>
-                    <button
-                        className="bg-green-900 hover:bg-emerald-300 text-white font-bold py-2 px-4 border-b-4 border-green-600 hover:border-blue-500 rounded w-48"
-                        onClick={displayUserSpecific}> Show My Scores
-                    </button>
                 </div>
-                <table>
-                    <thead>
-                    <tr>
-                        <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black text-3xl"}>#</td>
-                        <td onClick={updateSortDate}
-                            className={"font-bold w-64 bg-green-700 text-center border-2 border-black text-3xl"}>Date {getSortIndicator('date')}</td>
-                        <td onClick={updateSortUsername} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Username {getSortIndicator('username')}</td>
-                        <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Time {getSortIndicator('rank')}</td>
-                    </tr>
-                </thead>
-                <tbody className="overflow-y-scrolls h-min">
-                    {scores.map((score: score, index: number) => (
+                <div className={"max-h-full overflow-scroll"}>
+                    <table>
+                        <thead>
                         <tr>
-                            <td className={"w-12 bg-emerald-200 text-center border-2 border-black"}>{index+1}</td>
-                            <td className={"w-64 bg-emerald-200 text-center border-2 border-black"}>{formatString(score.createdAt.toString())}</td>
-                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.username}</td>
-                            <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.score/1000 + "s"}</td>
+                            <td className={"font-bold w-12 bg-green-700 text-center border-2 border-black text-3xl"}>#</td>
+                            <td onClick={updateSortDate}
+                                className={"font-bold w-64 bg-green-700 text-center border-2 border-black text-3xl"}>Date {getSortIndicator('date')}</td>
+                            <td onClick={updateSortUsername} className={"font-bold w-44 bg-green-700 text-center border-2 border-black text-3xl"}>Username {getSortIndicator('username')}</td>
+                            <td onClick={updateSortRank} className={"font-bold w-40 bg-green-700 text-center border-2 border-black text-3xl"}>Time {getSortIndicator('rank')}</td>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className="overflow-y-scrolls h-min">
+                        {scores.map((score: score, index: number) => (
+                            <tr>
+                                <td className={"w-12 bg-emerald-200 text-center border-2 border-black"}>{index+1}</td>
+                                <td className={"w-64 bg-emerald-200 text-center border-2 border-black"}>{formatString(score.createdAt.toString())}</td>
+                                <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{score.username}</td>
+                                <td className={"w-32 bg-emerald-200 text-center border-2 border-black"}>{msToReadable(score.score)}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
