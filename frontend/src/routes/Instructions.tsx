@@ -49,11 +49,14 @@ function Instructions() {
                         level
                     </li>
                 </ul>
+                <hr/>
                 <h2 className="text-xl underline">Multiplayer</h2>
                 <ol>
                     <li>Two players can play together</li>
                     <li>The second person plays first by opening a pair of tiles</li>
-                    <li>If matched the player gets a point and both the players can see the tiles greyed out, else the tiles close back</li>
+                    <li>If matched the player gets a point and both the players can see the tiles greyed out, else the
+                        tiles close back
+                    </li>
                     <li>The first person plays next</li>
                     <li>Both players keep playing until game finishes</li>
                     <li>The player with highest points wins</li>
