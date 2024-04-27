@@ -34,7 +34,7 @@ Users log in with GitHub and link their scores to their account. A leaderboard t
 ### Contributions
 1. Gabriel: Memory game, Readme, Presentation
 2. Mike: Leaderboard, Multiplayer
-3. Sai Teja: Login with GitHub authentication, Instructions page, Readme 
+3. Sai Teja: Login with GitHub authentication, Instructions page, Leaderboard, Readme 
 4. Ronak: Database, Styling support, Presentation, Video Script
 5. Klaudio: Memory game, Styling
 - **Note:** All the members worked collaboratively by meeting at regular intervals and were involved in all the parts of the project.
