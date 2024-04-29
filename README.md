@@ -1,7 +1,10 @@
 # Memory Game
 
+### Deployment Link: https://cs4241-deployment-test-frontend.vercel.app/
+
 ### Description
 Forgetfulness is a plague that ruins the lives of many. It can be difficult to remember all the things you need to do, especially when you have a lot on your plate. Our memory game trains users in the art of memory so that they will never forget something again. Users face an ocean of tiles with hidden matching numbers. They flip over two tiles at a time to match them and try to match all tiles as fast as possible.
+Additionally, users can play against each other and compete to match the most tiles
 
 #### Pages
 1. Login: Has the button to login the user using GitHub OAuth. Redirects the user to GitHub Login page and on success redirects back to the homepage.
@@ -12,13 +15,18 @@ Forgetfulness is a plague that ruins the lives of many. It can be difficult to r
 6. Multiplayer: Allows two players to the play the game on the same board simultaneously using web sockets technology.
 
 ### Instructions
-Users log in with GitHub and link their scores to their account. A leaderboard tracks users and their lowest times, so they can compete to have the best memory. The memory game has the difficulty level to set the board dimensions accordingly and clicking on the play button will start the game and the timer. The timer automatically stops and submits the score to backend when game completes.  
+Users log in with GitHub and link their scores to their account. A leaderboard tracks users and their lowest times, so they can compete to have the best memory. The memory game has the difficulty level to set the board dimensions accordingly and clicking on the play button will start the game and the timer. The timer automatically stops and submits the score to backend when game completes. 
+To play multiplayer, 2 users need to navigate to the multiplayer page, then one of them can start a game, which will start a game for both with the identical board.
+The players will then take turns flipping tiles, and if a player matches 2 tiles, they will get another turn.
 
 ### Technologies
-- We used React and Tailwind on the front-end to code the site and game.
+- We used TypeScript as our programming language. 
+- We used React, Tailwind, and Bootstrap on the front-end to code the site and game.
 - We used web sockets for multiplayer.
-- We used Node.js and MongoDB on the back-end to store and retrieve scores.
+- We used Express and MongoDB on the back-end to store and retrieve scores.
+- We used turbo to run the backend and frontend in the same repository. 
 - We used local storage, access tokens, authorization bearers, GitHub urls for routing between the web application and GitHub login page, React hooks and search params, and promises to authenticate users with GitHub.
+- We used vercel to deploy the frontend and render to deploy the backend. 
 
 ### Challenges
 - The initial challenge was to configure login with GitHub as we need to use local storage to determine if the user is logged-in in the frontend. In addition, there had to be made a few changes to the PassportJS logic to be able to authenticate the user using GitHub and route accordingly in the frontend using React.
@@ -33,7 +41,7 @@ Users log in with GitHub and link their scores to their account. A leaderboard t
 
 ### Contributions
 1. Gabriel: Memory game, Readme, Presentation
-2. Mike: Leaderboard, Multiplayer
+2. Mike: Leaderboard, Multiplayer, deployment
 3. Sai Teja: Login with GitHub authentication, Instructions page, Leaderboard, Readme 
 4. Ronak: Database, Styling support, Presentation, Video Script
 5. Klaudio: Memory game, Styling
