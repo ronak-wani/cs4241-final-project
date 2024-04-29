@@ -44,7 +44,7 @@ The players will then take turns flipping tiles, and if a player matches 2 tiles
 2. Mike: Leaderboard, Multiplayer, deployment
 3. Sai Teja: Login with GitHub authentication, Instructions page, Leaderboard, Readme 
 4. Ronak: Database, Styling support, Presentation, Video Script
-5. Klaudio: Memory game, Styling
+5. Klaudio: Memory game, Styling, Video Editing
 - **Note:** All the members worked collaboratively by meeting at regular intervals and were involved in all the parts of the project.
 
 ### Accessibility Features
