@@ -52,4 +52,3 @@ The players will then take turns flipping tiles, and if a player matches 2 tiles
 - Used a proper color scheme to make web application look elegant.
 - Set the font sizes according to the purpose like the headings have a greater font-size for better visibility.
 - Have a 90+% Google Lighthouse accessibility score.
-
